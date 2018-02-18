@@ -420,19 +420,24 @@ window.addEventListener('touchstart', touchStart, false);
 window.addEventListener('touchmove', touchMove, false);
 window.addEventListener('touchend', touchEnd, false);
 var startTop;
-
+var Movein = false;
+var TouchFlag=false;
 function touchStart(event) {
+	if(TouchFlag) return;
+	Movein = true;
 	wrapBox.classList.add("warpBox_tochMoveing");
 	// var touch =   event.originalEvent.targetTouches[0];
 	// startY = touch.pageY;
 	startY = event.touches[0].clientY;
 	startTop = parseInt(wrapBox.style.top);
 	//    console.log("开始滑动 " + startY);
+	Movein=true;
 }
 
 function touchMove(event) {
 	// var touch =  event.originalEvent.changedTouches[0];
 	// endY = touch.pageY;
+	if(TouchFlag||!Movein) return;
 	endY = event.touches[0].clientY;
 	var movesize = endY - startY;
 	wrapBox.style.top = startTop + movesize + "px";
@@ -440,6 +445,7 @@ function touchMove(event) {
 }
 
 function touchEnd(event) {
+	if(TouchFlag) return
 	wrapBox.classList.remove("warpBox_tochMoveing");
 	if(oldY == endY) {
 		return;
@@ -454,4 +460,7 @@ function touchEnd(event) {
 		indexs = this.indexs + 1;
 		btnChange(indexs, true, 1);
 	}
+	Movein=false;
+	TouchFlag=true;
+	setTimeout("TouchFlag=false",900)
 }

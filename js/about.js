@@ -437,7 +437,7 @@ function touchStart(event) {
 function touchMove(event) {
 	// var touch =  event.originalEvent.changedTouches[0];
 	// endY = touch.pageY;
-	if(TouchFlag||!Movein) return;
+	if(!Movein) return;
 	endY = event.touches[0].clientY;
 	var movesize = endY - startY;
 	wrapBox.style.top = startTop + movesize + "px";

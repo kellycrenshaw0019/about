@@ -459,8 +459,10 @@ function touchEnd(event) {
 		//向下滑动
 		indexs = this.indexs + 1;
 		btnChange(indexs, true, 1);
+	}else {
+		btnChange(indexs, true, 1);
 	}
 	Movein=false;
 	TouchFlag=true;
-	setTimeout("TouchFlag=false",900)
+	setTimeout("TouchFlag=false",900);
 }

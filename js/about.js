@@ -1,3 +1,6 @@
+	var h = window.innerHeight;
+	var w = window.innerWidth;
+
 (function() {
 	var h = window.innerHeight;
 	var w = window.innerWidth;
@@ -260,6 +263,10 @@ function btnChange(index, flag, speed) {
 		box02_timer = setInterval(boxTow, 1100);
 		box02_flag = false;
 	}
+	//第三屏
+	if(indexs == 2) {
+		setTime_li()
+	}
 }
 
 //浮动点击事件
@@ -406,11 +413,15 @@ right_div.onclick = function() {
 	if(li_times < e_li.length - 2) {
 		li_times++;
 		setTime_li();
-		player.play();
 	}
 }
 //时间轴翻页
 function setTime_li() {
+	var ii=document.getElementById('timeUl').children.length
+	for(var i=0;i<e_li.length;i++){
+		e_li[i].style.width=100/e_li.length+"%";
+	}
+	document.getElementById('timeUl').style.width = e_li.length*40+"%";
 	var i = e_li[0].offsetWidth * li_times;
 	document.getElementById('timeUl').style.left = -i + 'px';
 }

@@ -590,7 +590,7 @@ body{
 /*时间轴*/
 .timeUl{
     height: 100%;
-    width: 160%;
+    width: 0%;
     position: relative;
     left: 0;
     -webkit-transition: all ease 0.8s;
@@ -617,7 +617,7 @@ body{
 }
 
 .timeUl li{
-    width: 25%;
+    width: 20%;
     float: left;
     height: 100%;
     position: relative;

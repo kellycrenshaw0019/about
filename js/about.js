@@ -1,6 +1,7 @@
 	var h = window.innerHeight;
 	var w = window.innerWidth;
-
+	var x_arr = new Array();
+	var y_arr = new Array();
 (function() {
 	var h = window.innerHeight;
 	var w = window.innerWidth;
@@ -37,8 +38,7 @@
 		}
 	}
 
-	var x_arr = new Array();
-	var y_arr = new Array();
+
 	var x = y = m = 0;
 	for(var i = 0; i < 800; i++) {
 		if(i >= 400) {

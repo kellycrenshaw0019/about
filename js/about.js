@@ -25,18 +25,19 @@
 	}
 
 	var box01_index = 0;
-	var box01_p = document.getElementById('box01_text').children;
-
-	function boxOne() {
-		if(indexs != 0) {
-			//暂无
-		} else if(box01_index >= 0 && box01_index <= (box01_p.length - 1)) {
-			box01_p[box01_index].style.opacity = '1';
-			box01_index++;
-		} else {
-			clearInterval(boxOneTimer);
-		}
-	}
+//淡入文字
+//	var box01_p = document.getElementById('box01_text').children;
+//
+//	function boxOne() {
+//		if(indexs != 0) {
+//			//暂无
+//		} else if(box01_index >= 0 && box01_index <= (box01_p.length - 1)) {
+//			box01_p[box01_index].style.opacity = '1';
+//			box01_index++;
+//		} else {
+//			clearInterval(boxOneTimer);
+//		}
+//	}
 
 
 	var x = y = m = 0;
@@ -105,7 +106,7 @@
 	var blogTimer = setInterval(moveblog, 2);
 
 	//第一屏文字加载
-	var boxOneTimer = setInterval(boxOne, 1800);
+	//var boxOneTimer = setInterval(boxOne, 2400);
 })();
 
 var f_btn = document.getElementById("float_btn").children;

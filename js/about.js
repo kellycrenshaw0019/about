@@ -1,3 +1,7 @@
+	var h = window.innerHeight;
+	var w = window.innerWidth;
+	var x_arr = new Array();
+	var y_arr = new Array();
 (function() {
 	var h = window.innerHeight;
 	var w = window.innerWidth;
@@ -21,21 +25,21 @@
 	}
 
 	var box01_index = 0;
-	var box01_p = document.getElementById('box01_text').children;
+//淡入文字
+//	var box01_p = document.getElementById('box01_text').children;
+//
+//	function boxOne() {
+//		if(indexs != 0) {
+//			//暂无
+//		} else if(box01_index >= 0 && box01_index <= (box01_p.length - 1)) {
+//			box01_p[box01_index].style.opacity = '1';
+//			box01_index++;
+//		} else {
+//			clearInterval(boxOneTimer);
+//		}
+//	}
 
-	function boxOne() {
-		if(indexs != 0) {
-			//暂无
-		} else if(box01_index >= 0 && box01_index <= (box01_p.length - 1)) {
-			box01_p[box01_index].style.opacity = '1';
-			box01_index++;
-		} else {
-			clearInterval(boxOneTimer);
-		}
-	}
 
-	var x_arr = new Array();
-	var y_arr = new Array();
 	var x = y = m = 0;
 	for(var i = 0; i < 800; i++) {
 		if(i >= 400) {
@@ -102,7 +106,7 @@
 	var blogTimer = setInterval(moveblog, 2);
 
 	//第一屏文字加载
-	var boxOneTimer = setInterval(boxOne, 1800);
+	//var boxOneTimer = setInterval(boxOne, 2400);
 })();
 
 var f_btn = document.getElementById("float_btn").children;
@@ -260,6 +264,10 @@ function btnChange(index, flag, speed) {
 		box02_timer = setInterval(boxTow, 1100);
 		box02_flag = false;
 	}
+	//第三屏
+	if(indexs == 2) {
+		setTime_li()
+	}
 }
 
 //浮动点击事件
@@ -406,11 +414,15 @@ right_div.onclick = function() {
 	if(li_times < e_li.length - 2) {
 		li_times++;
 		setTime_li();
-		player.play();
 	}
 }
 //时间轴翻页
 function setTime_li() {
+	var ii=document.getElementById('timeUl').children.length
+	for(var i=0;i<e_li.length;i++){
+		e_li[i].style.width=100/e_li.length+"%";
+	}
+	document.getElementById('timeUl').style.width = e_li.length*40+"%";
 	var i = e_li[0].offsetWidth * li_times;
 	document.getElementById('timeUl').style.left = -i + 'px';
 }
@@ -420,19 +432,24 @@ window.addEventListener('touchstart', touchStart, false);
 window.addEventListener('touchmove', touchMove, false);
 window.addEventListener('touchend', touchEnd, false);
 var startTop;
-
+var Movein = false;
+var TouchFlag=false;
 function touchStart(event) {
+	if(TouchFlag) return;
+	Movein = true;
 	wrapBox.classList.add("warpBox_tochMoveing");
 	// var touch =   event.originalEvent.targetTouches[0];
 	// startY = touch.pageY;
 	startY = event.touches[0].clientY;
 	startTop = parseInt(wrapBox.style.top);
 	//    console.log("开始滑动 " + startY);
+	Movein=true;
 }
 
 function touchMove(event) {
 	// var touch =  event.originalEvent.changedTouches[0];
 	// endY = touch.pageY;
+	if(!Movein) return;
 	endY = event.touches[0].clientY;
 	var movesize = endY - startY;
 	wrapBox.style.top = startTop + movesize + "px";
@@ -440,6 +457,7 @@ function touchMove(event) {
 }
 
 function touchEnd(event) {
+	if(TouchFlag) return
 	wrapBox.classList.remove("warpBox_tochMoveing");
 	if(oldY == endY) {
 		return;
@@ -453,5 +471,10 @@ function touchEnd(event) {
 		//向下滑动
 		indexs = this.indexs + 1;
 		btnChange(indexs, true, 1);
+	}else {
+		btnChange(indexs, true, 1);
 	}
+	Movein=false;
+	TouchFlag=true;
+	setTimeout("TouchFlag=false",900);
 }

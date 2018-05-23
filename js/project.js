@@ -1,11 +1,10 @@
 var debug = false; //调试模式
 
 //然并卵的入口
-
 function about_main() {
 	//然并卵的检测分辨率
-	if(document.documentElement.clientWidth < 500) {
-		alert('此屏幕分辨率可能无法展现全部内容');
+	if(document.documentElement.clientWidth < 600) {
+		alert('当前屏幕分辨率超出我的预估');
 	}
 	//测试用用
 	if(debug) logout('测试');
@@ -30,7 +29,6 @@ function byid(s) {
 }
 
 //动态执行 调试用
-
 function ev() {
 	var a = byid('mydebug').innerText;
 	//var a = byid('mydebug').innerText.replace(/<br>/g, "\n").replace(/&nbsp;/g, ' ');
@@ -100,15 +98,6 @@ function checkTime(i) {
 	return i;
 }
 
-//获取当前年月
-
-function nowday() {
-	var d = new Date();
-	var doc = document.getElementById("now_day");
-	var day = checkTime(d.getMonth() - 1) + "." + checkTime(d.getDate());
-	doc.innerHTML = day;
-}
-nowday();
 
 //获取URL数据
 function urlData(n) {
@@ -175,5 +164,4 @@ vv.setAttribute('content','width=device-width,initial-scale=1,maximum-scale=1.0,
         vv.disabled = false;
     };
 */
-
 about_main();

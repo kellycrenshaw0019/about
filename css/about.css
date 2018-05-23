@@ -175,7 +175,6 @@ body{
 }
 
 .cycle_item{
-    background: url('../images/icon/cycle.svg') no-repeat;
     width: 400px;
     height: 400px;
     margin-left: auto;
@@ -224,9 +223,7 @@ body{
     border-radius: 50%;
     border: 3px solid pink;
     margin: 7px;
-    -webkit-animation: headneon 1.5s ease-in-out infinite alternate;
-    -moz-animation: headneon 1.5s ease-in-out infinite alternate;
-    animation: headneon 1.5s ease-in-out infinite alternate;
+	box-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 5px #fff, 0 0 1px #fff;
 }
 
 @-webkit-keyframes headneon {
@@ -592,7 +589,7 @@ body{
     height: 100%;
     width: 160%;
     position: relative;
-    left: 0;
+    left: -160%;
     -webkit-transition: all ease 0.8s;
     -moz-transition: all ease 0.8s;
     -ms-transition: all ease 0.8s;

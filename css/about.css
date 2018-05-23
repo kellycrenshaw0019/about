@@ -509,14 +509,18 @@ body{
 }
 
 .box_content{
-    width: 94%;
-    left: 10%;
+    width: 90%;
+    left: 5%;
     position: absolute;
     z-index: 2;
 }
+.box_content_2{
+    width: 80%;
+    left: 10%;
+}
 
 .box_content{
-    top: 18%;
+    top: 10%;
 }
 
 .shuxian{
@@ -579,7 +583,7 @@ body{
 }
 
 .box03_content{
-    right: 19%;
+    right: 10%;
     height: 60%;
     text-align: right;
     overflow: hidden;

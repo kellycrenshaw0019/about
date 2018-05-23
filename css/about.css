@@ -509,7 +509,7 @@ body{
 }
 
 .box_content{
-    width: 80%;
+    width: 94%;
     left: 10%;
     position: absolute;
     z-index: 2;
@@ -647,7 +647,7 @@ body{
     opacity: 0.9;  
     text-align: center;
     color: #ffffff;
-    box-shadow: 10px 10px 5px #000000;
+    box-shadow: 10px 10px 5px #00000080;
 }
 
 .timeUl li:nth-child(2n) div{
@@ -663,7 +663,8 @@ body{
 }
 
 .timeUl li div{
-    font-weight: normal;    
+    font-weight: normal;   
+    border-radius: 2%; 
 }
 
 .left_arrow,.right_arrow{
@@ -687,8 +688,8 @@ body{
 }
 
 .box04_content{
-    left: 10%;
-    height: 80%;
+    left: 3%;
+    height: 90%;
     overflow: hidden;
 }
 

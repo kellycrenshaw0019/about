@@ -52,36 +52,6 @@ var mplayer_song = [
 	],
 	[{
 			"basic": true,
-			"name": "M",
-			"singer": " ",
-			"img": "image/null.jpg"
-		},
-		{
-			"name": "东京不太热",
-			"singer": "囧菌",
-			"img": "images/404.jpg",
-			"src": "audio/music3.mp3",
-			"lrc": "[00:00.00]歌词加载中...",
-			"slrc":"audio/lrc/music3.lrc"
-		},
-		{
-			"name": "銀河鉄道のペンギン (feat. nicamoq)",
-			"singer": "Aiobahn Yunomi",
-			"img": "http://p1.music.126.net/_3pNNriwuL--W5CUKHC2-Q==/3261151499483479.jpg?param=130y130",
-			"src": "audio/music2.mp3",
-			"lrc": "[00:00.00]歌词加载中...",
-			"slrc":"audio/lrc/music2.lrc"
-		},
-		{
-			"name": "Undertale",
-			"singer": "Toby Fox",
-			"img": "http://p4.music.126.net/oZe-JSuWYAR8zSa29g9g0g==/3254554423361647.jpg?param=177y177",
-			"src": "audio/Toby_Fox-Undertale.mp3",
-			"lrc": ""
-		}
-	],
-	[{
-			"basic": true,
 			"name": "Lu",
 			"singer": "某不知名白狼",
 			"img": "image/pic/head.jpg"
@@ -90,15 +60,22 @@ var mplayer_song = [
 			"name": "I'm So Happy",
 			"singer": "中原龍太郎",
 			"img": "http://p1.music.126.net/cxjF4-0CX9TXMF50zxgxXg==/2426622162526064.jpg?param=177y177",
-			"src": "audio/music4.mp3",
+			"src": "audio/happy.mp3",
 			"lrc": "",
-			"slrc":"audio/lrc/music4.lrc"
+			"slrc":"audio/lrc/happy.lrc"
 		},
 		{
 			"name": "404",
 			"singer": "-",
 			"img": "images/404.jpg",
 			"src": "audio/404.mp3",
+			"lrc": ""
+		},
+		{
+			"name": "Undertale",
+			"singer": "Toby Fox",
+			"img": "http://p4.music.126.net/oZe-JSuWYAR8zSa29g9g0g==/3254554423361647.jpg?param=177y177",
+			"src": "audio/Toby_Fox-Undertale.mp3",
 			"lrc": ""
 		}
 	]

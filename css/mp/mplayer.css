@@ -78,6 +78,7 @@
   position: absolute;
   top: 10px;
   left: 10px;
+  border-radius: 4%;
 }
 /* line 76, mplayer.less */
 .mp .mp-info {
@@ -377,6 +378,7 @@ top: 0px;
 /* line 321, mplayer.less */
 .mp .mp-list-box.mp-list-show {
   height: 400px;
+  border-radius: 0% 5% 0% 0%;
 }
 /* line 325, mplayer.less */
 .mp .mp-list-title {

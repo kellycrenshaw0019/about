@@ -358,7 +358,7 @@ window.onmousewheel = document.onmousewheel = scrollFunc; //IE/Opera/Chrome/Safa
 var iB = true;
 //监听窗口改变
 window.onresize = function() {
-	document.getElementsByTagName("html")[0].style.fontSize = document.documentElement.clientWidth / 20 + 'px';
+	//document.getElementsByTagName("html")[0].style.fontSize = document.documentElement.clientWidth / 20 + 'px';
 	var h = window.innerHeight;
 	var w = window.innerWidth;
 	if(w / h >= 1920 / 1080) {
@@ -424,7 +424,7 @@ function setTime_li() {
 	}
 	document.getElementById('timeUl').style.width = e_li.length*40+"%";
 	var i = e_li[0].offsetWidth * li_times;
-	document.getElementById('timeUl').style.left = -i + 'px';
+	document.getElementById('timeUl').style.left = 20-i + 'px';
 }
 //手势事件
 var startY, endY, oldY

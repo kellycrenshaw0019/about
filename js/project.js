@@ -85,7 +85,7 @@ function show_date_time() {
 	minsold = Math.floor((e_hrsold - hrsold) * 60);
 	seconds = Math.floor((e_minsold - minsold) * 60);
 	for(i in tm) {
-		tm[i].innerText = "辣鸡主页已存活" + checkTime(daysold) + "天" + checkTime(hrsold) + "小时" + checkTime(minsold) + "分" + checkTime(seconds) + "秒";
+		tm[i].innerText = "Sakura & Erii の主页已存活" + checkTime(daysold) + "天" + checkTime(hrsold) + "小时" + checkTime(minsold) + "分" + checkTime(seconds) + "秒";
 	}
 }
 

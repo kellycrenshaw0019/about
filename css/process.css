@@ -302,7 +302,8 @@
 .bq li h2{
   font-size:140%;
   font-weight:bold;
-  padding-bottom:10px;
+  /*padding-bottom:10px;*/
+  padding: inherit !important;
 }
 .bq li p{
   font-family:"Reenie Beanie",arial,sans-serif;

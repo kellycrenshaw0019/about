@@ -363,40 +363,13 @@ window.onresize = function() {
 	var w = window.innerWidth;
 	if(w / h >= 1920 / 1080) {
 		iB = true;
-		imgChange(iB);
 		btnChange(indexs);
 
 	} else {
 		iB = false;
-		imgChange(iB);
 		btnChange(indexs, false);
 	}
 	setTime_li()
-}
-
-function imgChange(iB) {
-	var h = window.innerHeight;
-	var w = window.innerWidth;
-	if(iB) {
-		for(var i = 0; i < bg.length; i++) {
-			bg[i].style.width = w + 'px';
-			bg[i].style.height = w * (1080 / 1920) + 'px';
-			bg[i].style.top = -(w * (1080 / 1920) - h) / 2 + 'px';
-			boxs[i].style.width = w + 'px';
-			boxs[i].style.height = h + 'px';
-			bg[i].style.left = '0';
-		}
-	} else {
-		for(var i = 0; i < bg.length; i++) {
-			bg[i].style.height = h + 'px';
-			bg[i].style.width = h * (1920 / 1080) + 'px';
-			bg[i].style.left = -(h * (1920 / 1080) - w) / 2 + 'px';
-			boxs[i].style.width = w + 'px';
-			boxs[i].style.height = h + 'px';
-			bg[i].style.top = '0';
-		}
-
-	}
 }
 
 var e_li = document.getElementById('timeUl').children;

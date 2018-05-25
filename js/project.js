@@ -3,7 +3,7 @@ var debug = false; //调试模式
 //然并卵的入口
 function about_main() {
 	//然并卵的检测分辨率
-	if(document.documentElement.clientWidth < 600) {
+	if(document.documentElement.clientWidth < 500) {
 		alert('当前屏幕分辨率超出我的预估');
 	}
 	//测试用用

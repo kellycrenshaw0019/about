@@ -176,6 +176,7 @@ body {
 
 .bg02 {
 	background: url(../images/pic/pic_2.jpg);
+	background-position: right center !important;
 }
 
 .bg03 {

@@ -90,10 +90,9 @@
 }
 /* line 83, mplayer.less */
 .mp .mp-lrc-box {
-  padding: 0px;
+  padding: 10px;
   position: absolute;
-  top: 5px;
-  left: 599px;
+  left: 574px;
   background-color: #212121;
   border-radius: 0 5px 5px 0;
   overflow: hidden;
@@ -106,8 +105,7 @@
 }
 /* line 96, mplayer.less */
 .mp .mp-lrc-box.mp-lrc-show {
-width: 200px;
-padding: 10px;
+width: 225px;
 top: 0px;
 }
 /* line 98, mplayer.less */
@@ -123,24 +121,11 @@ top: 0px;
   color: #FFF;
   text-align: center;
   line-height: 2;
+  margin-left: 20px;
 }
 /* line 112, mplayer.less */
 .mp .mp-lrc-current {
   color: #d32f2f;
-}
-/* line 115, mplayer.less */
-.mp .mp-lrc-close {
-  width: 7px;
-  height: 7px;
-  background: url("../../images/mp/mplayer_bg.png") no-repeat 0 -56px;
-  position: absolute;
-  top: 7px;
-  right: -215px;
-  opacity: 0;
-  -webkit-transition: opacity .5s;
-  -moz-transition: opacity .5s;
-  -o-transition: opacity .5s;
-  transition: opacity .5s;
 }
 /* line 127, mplayer.less */
 .mp .mp-lrc-close:hover {

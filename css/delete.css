@@ -1,4 +1,18 @@
 /* 弃用元素 */
+/* line 115, mplayer.less */
+.mp .mp-lrc-close {
+  width: 7px;
+  height: 7px;
+  background: url("../../images/mp/mplayer_bg.png") no-repeat 0 -56px;
+  position: absolute;
+  top: 7px;
+  right: -215px;
+  opacity: 0;
+  -webkit-transition: opacity .5s;
+  -moz-transition: opacity .5s;
+  -o-transition: opacity .5s;
+  transition: opacity .5s;
+}
 
 .hobby_content{
     padding: 15px 0 0 0;

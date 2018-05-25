@@ -274,6 +274,12 @@ body {
 	border: 3px solid pink;
 	margin: 7px;
 	box-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 5px #fff, 0 0 1px #fff;
+	transition: all ease 1s;
+}
+
+.head_img:active {
+width: 195px;
+height: 195px;
 }
 
 @-webkit-keyframes headneon {

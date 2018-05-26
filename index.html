@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>About.依玖梦白</title>
-		<meta name="viewport" content="width=device-width,initial-scale=0.6,maximum-scale=1.0,user-scalable=no">
+		<meta name="viewport" content="width=device-width,initial-scale=0.7,maximum-scale=1.0,user-scalable=no">
 		<meta name="apple-mobile-app-capable" content="yes">
 		<meta name="apple-mobile-app-status-bar-style" content="black">
 		<meta name="description" content="名为小樱花，意为白罂粟。">
@@ -15,7 +15,6 @@
 		<link rel="stylesheet" type="text/css" href="css/process.css">
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 		<script src="js/jquery-3.0.0.js"></script>
-		<script src="js/d3.v3.min.js"></script>
 		<!--<script type="text/javascript">
       document.getElementsByTagName("html")[0].style.fontSize = document.documentElement.clientWidth/19 + 'px';
 </script>
@@ -184,7 +183,7 @@
 								<h1>E.N.D</h1>
 								<p>Sakura</p>
 								<p>最好了</p>
-								<p name="play_music"> BGM: <u>最后的旅行</u></p>
+								<p name="play_music" style="cursor: pointer;"> BGM: <u>最后的旅行</u></p>
 							</div>
 						</li>
 					</ul>
@@ -287,17 +286,17 @@
 
 						</li>-->
 						<li class="uname1_items">
-							<a id="mpt" onclick="ev()">ERII & SAKURA の歌单</a>
+							<a id="mpt" onclick="ev()">歌单</a>
 						</li>
 						<li class="qie_items">
-							<a href="http://whiteg.cn/jump/qq.html" target="_blank">ERII & SAKURA の企鹅</a>
+							<a href="http://whiteg.cn/jump/qq.html" target="_blank">企鹅</a>
 						</li>
 						<li class="pan_items">
 							<!--<a href="https://pan.baidu.com/s/1c1PXDcs?adapt=pc" target="_blank">网盘</a>-->
-							<a href="http://yun.whiteg.cn" target="_blank">ERII & SAKURA の私云</a>
+							<a href="http://yun.whiteg.cn" target="_blank">私云</a>
 						</li>
 						<li class="email_items">
-							<a href="mailto:moewhite19@163.com" target="_self">ERII & SAKURA の邮箱</a>
+							<a href="mailto:moewhite19@163.com" target="_self">邮箱</a>
 						</li>
 						<div class="clear"></div>
 					</ul>
@@ -307,7 +306,7 @@
 					<h3>©2016-2018 Powered by
 			<p title="Thanks" target="_blank"><a title="全栈大佬" href="https://www.coolecho.net/">Cononico's 绘枫和畅</a> | <a href='https://github.com/0936zz'>0936zz</a> | <a title="你想干什么？" href="http://whiteg.cn">MoeWhite19 依玖梦白</a></p>
 			<p title="你的名字?" target="_blank">友人帐&nbsp;&nbsp;-<a title="冷月葬玫瑰" href="http://www.lonelyor.org">lonelyor</a>-&nbsp;&nbsp;-<a title="这家伙已经放弃了git(笑" href="https://my.oschina.net/0936zz">0936zz</a>-</p>
-			<p title="3/2/2017 07:59:09" name="show_time">时间</p>
+			<p title="3/2/2017 07:59:09" name="show_time" style="cursor: progress;">时间</p>
 			<!--a href="http://www.miitbeian.gov.cn/" title="beian" target="_blank">粤ICP备*******号</a-->
 		  </h3>
 				</div>
@@ -349,8 +348,9 @@
 			</div>
 			<div class="mp-lrc-box">
 				<ul class="mp-lrc"></ul>
+				<button class="mp-lrc-close"></button>
 			</div>
-			<button class="mp-toggle">
+			<button id="mp-toggle" class="mp-toggle">
 		<span class="mp-toggle-img"></span>
 	  </button>
 			<div class="mp-list-box">

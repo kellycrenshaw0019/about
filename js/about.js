@@ -1,7 +1,7 @@
 	var h = window.innerHeight;
 	var w = window.innerWidth;
-	var x_arr = new Array();
-	var y_arr = new Array();
+//	var x_arr = new Array();
+//	var y_arr = new Array();
 (function() {
 	var h = window.innerHeight;
 	var w = window.innerWidth;
@@ -26,20 +26,27 @@
 
 	var box01_index = 0;
 //淡入文字
-//	var box01_p = document.getElementById('box01_text').children;
-//
-//	function boxOne() {
-//		if(indexs != 0) {
-//			//暂无
-//		} else if(box01_index >= 0 && box01_index <= (box01_p.length - 1)) {
-//			box01_p[box01_index].style.opacity = '1';
-//			box01_index++;
-//		} else {
-//			clearInterval(boxOneTimer);
-//		}
-//	}
+	var box01_p = document.getElementById('box01_text').children;
 
+	function boxOne() {
+		if(indexs != 0) {
+			//暂无
+		} else if(box01_index >= 0 && box01_index <= (box01_p.length - 1)) {
+			box01_p[box01_index].style.opacity = '1';
+			box01_index++;
+		} else {
+			clearInterval(boxOneTimer);
+		}
+	}
 
+	var gitMove = document.getElementById('github_a');
+	var weiboMove = document.getElementById('weibo_a')
+	var blogMove = document.getElementById('blog_a')
+/*	gitMove.style.transform="rotate(0deg) translateX(200px) rotate(-0deg)";	
+	weiboMove.style.transform="rotate(120deg) translateX(200px) rotate(-120deg)";	
+	blogMove.style.transform="rotate(240deg) translateX(200px) rotate(-240deg)";*/	
+/*
+//	 原型轨迹
 	var x = y = m = 0;
 	for(var i = 0; i < 800; i++) {
 		if(i >= 400) {
@@ -55,12 +62,8 @@
 		y_arr[i] = parseInt(y) - 25;
 	}
 
-	/*
-	 *原型轨迹
-	 */
-	var gitMove = document.getElementById('github_a');
-	var weiboMove = document.getElementById('weibo_a')
-	var blogMove = document.getElementById('blog_a')
+
+
 	var g_num = 0;
 	var w_num = 0;
 	var b_num = 0;
@@ -104,9 +107,10 @@
 	var weiTimer = setInterval(moveweibo, 2);
 	moveblog();
 	var blogTimer = setInterval(moveblog, 2);
+	*/
 
 	//第一屏文字加载
-	//var boxOneTimer = setInterval(boxOne, 2400);
+	var boxOneTimer = setInterval(boxOne, 2400);
 })();
 
 var f_btn = document.getElementById("float_btn").children;

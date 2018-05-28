@@ -194,7 +194,19 @@ function divMove(obj, overHeight, num) {
 	//      },10);
 	//  }
 }
-
+//头像点击事件
+var headflag=false;
+function headclick(){
+/*	var h=byid("head")
+	if(headflag=!headflag){
+		h.style.transform="perspective(400px) rotateX(360deg) rotateZ(360deg)";
+		return;
+	}
+	h.style.transform="perspective(400px)";*/
+	var ran=RandomNum(-360,360);
+	cycle(ran);
+	console.log(ran);
+}
 //滚动函数
 function btnChange(index, flag, speed) {
 	var height = window.innerHeight;

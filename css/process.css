@@ -337,7 +337,7 @@
   position:relative;
   top:-10px;
 }
-.bq li a:hover,ul li a:focus{
+.bq li a:hover, .bq li a:focus{
   box-shadow:10px 10px 7px rgba(0,0,0,.7);
   -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
   -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);

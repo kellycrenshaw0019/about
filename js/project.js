@@ -1,5 +1,4 @@
 var debug = false; //调试模式
-
 //然并卵的入口
 function about_main() {
 	//然并卵的检测分辨率
@@ -22,6 +21,24 @@ function about_main() {
 	/*document.querySelector('body').addEventListener('touchstart', function (ev) {
 	    event.preventDefault();
 	});*/
+}
+//随机数
+function RandomNum(Min, Max) {
+	var Range = Max - Min;
+	var Rand = Math.random();
+	var num = Min + Math.round(Rand * Range);
+	return num;
+}
+//气泡旋转 a为角度b为轴距
+function cycle(a, b) {
+	var cycarr = document.getElementsByClassName("cycle_a");
+	var aa = a;
+	if(b == undefined) b = 200;
+	for(var i = 0; i < 3; i++) {
+		aa += 120;
+		cycarr[i].style.animation = "none"
+		cycarr[i].style.transform = "rotate(" + (aa-(aa*2)) + "deg) translateX(+" + b + "px) rotate(" + aa + "deg)";
+	}
 }
 
 function byid(s) {
@@ -97,7 +114,6 @@ function checkTime(i) {
 	}
 	return i;
 }
-
 
 //获取URL数据
 function urlData(n) {

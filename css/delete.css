@@ -1,4 +1,33 @@
 /* 弃用元素 */
+.head_img_div {
+	position: relative;
+	z-index: 2;
+	display: inline;
+	width: 200px;
+	height: 200px;
+	margin-top: 7px;
+}
+
+.green_cycle {
+	width: 260px;
+	height: 260px;
+	margin: 0 auto;
+	padding-top: 70px;
+}
+
+.yellow_cycle {
+	display: inline-block;
+	width: 240px;
+	height: 240px;
+	margin: 10px;
+}
+
+.blue_cycle {
+	width: 220px;
+	height: 220px;
+	text-align: center;
+	margin: 10px auto 10px auto;
+}
 
 .hobby_content{
     padding: 15px 0 0 0;

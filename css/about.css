@@ -164,7 +164,6 @@ body {
 
 .bg02 {
 	background: url(../images/pic/pic_2.jpg);
-	background-position: right center !important;
 }
 
 .bg03 {
@@ -204,9 +203,9 @@ body {
 }
 
 .head_div {
-	width: 80%;
+	width: 400px;
 	margin: 0 auto;
-	height: 50%;
+	height: 400px;
 }
 
 .cycle_item {
@@ -215,27 +214,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
-}
-
-.green_cycle {
-	width: 260px;
-	height: 260px;
-	margin: 0 auto;
-	padding-top: 70px;
-}
-
-.yellow_cycle {
-	display: inline-block;
-	width: 240px;
-	height: 240px;
-	margin: 10px;
-}
-
-.blue_cycle {
-	width: 220px;
-	height: 220px;
 	text-align: center;
-	margin: 10px auto 10px auto;
 }
 
 .green_cycle_img,
@@ -259,7 +238,7 @@ body {
 	height: 200px;
 	border-radius: 50%;
 	border: 3px solid pink;
-	margin: 7px;
+	margin: 97px;
 	box-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 5px #fff, 0 0 1px #fff;
 	transition: all cubic-bezier(.17,.84,.44,1) 1s;
 	transform: perspective(400px) rotateY(0deg);
@@ -270,48 +249,13 @@ body {
 	height: 195px;
 }
 
-@keyframes num1 {
-		0%{
-		transform: rotate(-120deg) translateX(10px) rotate(120deg);
-	}
-	100% {
-		transform: rotate(0deg) translateX(200px) rotate(-0deg);
-	}
-}
-
-@keyframes num2 {
-	0%{
-		transform: rotate(0deg) translateX(10px) rotate(-0deg);
-	}
-	100% {
-		transform: rotate(120deg) translateX(200px) rotate(-120deg);
-	}
-}
-
-@keyframes num3 {
-		0%{
-		transform: rotate(120deg) translateX(10px) rotate(-120deg);
-	}
-  100% {
-		transform: rotate(240deg) translateX(200px) rotate(-240deg);
-	}
-}
-
-@keyframes xuanzhuan {
-	0%{
-		transform: perspective(200px) rotateY(0deg)
-	}
-	100%{
-		transform: perspective(200px) rotateY(720deg);
-	}
-}
-
 .green_cycle_img {
 	animation-name: clockwise;
 	animation-duration: 1.8s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-direction: normal;
+	margin: 70px;
 }
 
 .yellow_cycle_img {
@@ -320,6 +264,7 @@ body {
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-direction: normal;
+	margin: 80px;
 }
 
 .blue_cycle_img {
@@ -328,54 +273,7 @@ body {
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-direction: normal;
-}
-
-@keyframes clockwise {
-	from {
-		-webkit-transform: rotate(0deg);
-		-moz-transform: rotate(0deg);
-		-ms-transform: rotate(0deg);
-		-o-transform: rotate(0deg);
-	}
-	to {
-		-webkit-transform: rotate(360deg);
-		-moz-transform: rotate(360deg);
-		-ms-transform: rotate(360deg);
-		-o-transform: rotate(360deg);
-	}
-}
-
-@-webkit-keyframes clockwise {
-	from {
-		-webkit-transform: rotate(0deg);
-	}
-	to {
-		-webkit-transform: rotate(360deg);
-	}
-}
-
-@keyframes anticlockwise {
-	from {
-		-webkit-transform: rotate(0deg);
-		-moz-transform: rotate(0deg);
-		-ms-transform: rotate(0deg);
-		-o-transform: rotate(0deg);
-	}
-	to {
-		-webkit-transform: rotate(-360deg);
-		-moz-transform: rotate(-360deg);
-		-ms-transform: rotate(-360deg);
-		-o-transform: rotate(-360deg);
-	}
-}
-
-@-webkit-keyframes anticlockwise {
-	from {
-		-webkit-transform: rotate(0deg);
-	}
-	to {
-		-webkit-transform: rotate(-360deg);
-	}
+	margin: 90px;
 }
 
 .svg-wrapper {
@@ -406,28 +304,42 @@ body {
 	transition: 1s all ease;
 }
 
-.cycle_item a {
+.cycle_a {
 	position: absolute;
 	display: block;
 	border-radius: 25px;
 	width: 120px;
 	height: 50px;
-	left: 140px;
-	top: 175px;
 	transition: all 2s ease;
 	animation-duration: 1.8s;
 	animation-timing-function: ease;
 	animation-iteration-count: 1;
 	animation-fill-mode: both;
 	animation-direction: alternate;
+	margin: 175px 140px;
 }
-#github_a
+.cycle_a_b{
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;
+}
+.cycle_a_b .cycle_icon_1,
+.cycle_icon_2,
+.cycle_icon_3 {
+	margin: 2px;
+	left: inherit !important;
+	border-radius: 30%;
+}
+.cycle_a_b .cycle_text{
+	display: none;
+}
+#item_1
  {
 	background-color: #42c9a3;
 	animation-name: num1;
 }
 
-#github_a .github_icon {
+#item_1 .cycle_icon_1 {
 	background: url('../images/icon/github.png') no-repeat;
 	border-radius: 25px;
 	display: block;
@@ -439,9 +351,7 @@ body {
 	left: 5px;
 }
 
-.github_text,
-.weibo_text,
-.blog_text {
+.cycle_text {
 	width: 50px;
 	margin-top: 0;
 	left: 50px;
@@ -459,12 +369,12 @@ body {
 	white-space: nowrap;
 }
 
-#weibo_a {
+#item_2 {
 	background-color: #EAC251;
 	animation-name: num2;
 }
 
-#weibo_a .weibo_icon {
+#item_2 .cycle_icon_2 {
 	background: url('../images/icon/weibo.png');
 	border-radius: 25px;
 	display: block;
@@ -476,12 +386,12 @@ body {
 	left: 5px;
 }
 
-#blog_a {
+#item_3 {
 	background-color: #6DB3D9;
 	animation-name: num3;
 }
 
-#blog_a .blog_icon {
+#item_3 .cycle_icon_3 {
 	background: url('../images/icon/blog.png');
 	display: block;
 	width: 50px;
@@ -590,12 +500,6 @@ body {
 
 .box_content {
 	top: 10%;
-}
-
-.shuxian {
-	width: 1px;
-	height: 100%;
-	background-color: #42c9a3;
 }
 
 #box02_text {
@@ -981,6 +885,72 @@ body {
 	display: none;
 }
 
+@keyframes num1 {
+		0%{
+		transform: rotate(-120deg) translateX(10px) rotate(120deg);
+	}
+	100% {
+		transform: rotate(0deg) translateX(200px) rotate(-0deg);
+	}
+}
+
+@keyframes num2 {
+	0%{
+		transform: rotate(0deg) translateX(10px) rotate(-0deg);
+	}
+	100% {
+		transform: rotate(120deg) translateX(200px) rotate(-120deg);
+	}
+}
+
+@keyframes num3 {
+		0%{
+		transform: rotate(120deg) translateX(10px) rotate(-120deg);
+	}
+  100% {
+		transform: rotate(240deg) translateX(200px) rotate(-240deg);
+	}
+}
+
+@keyframes xuanzhuan {
+	0%{
+		transform: perspective(200px) rotateY(0deg)
+	}
+	100%{
+		transform: perspective(200px) rotateY(720deg);
+	}
+}
+
+@keyframes clockwise {
+	from {
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+	}
+}
+
+@keyframes anticlockwise {
+	from {
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(-360deg);
+		-moz-transform: rotate(-360deg);
+		-ms-transform: rotate(-360deg);
+		-o-transform: rotate(-360deg);
+	}
+}
+
 @media screen and (max-width: 1100px) {
 	.head {
 		height: 70px
@@ -1057,20 +1027,11 @@ body {
 	.box01_content {
 		top: 0;
 	}
-	.head_div {
-		width: 100%;
-	}
 	.cycle_item {
-		width: 100%;
 		height: auto;
-		margin: 0 auto;
-		background: none;
 	}
 	.cycle_item a {
 		display: none;
-	}
-	.green_cycle {
-		padding-top: 3.2em;
 	}
 	.box01_content .title {
 		font-size: 1em;

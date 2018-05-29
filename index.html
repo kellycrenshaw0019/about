@@ -15,15 +15,11 @@
 		<link rel="stylesheet" type="text/css" href="css/process.css">
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 		<script src="js/jquery-3.0.0.js"></script>
-		<!--<script type="text/javascript">
-      document.getElementsByTagName("html")[0].style.fontSize = document.documentElement.clientWidth/19 + 'px';
-</script>
--->
-		<script src="js/zzbaidu.js">
-		</script>
+		<script src="js/project.js" ></script>
+		<script src="js/zzbaidu.js"></script>
 	</head>
 
-	<body>
+	<body onload="loaddone()">
 		<header class="head">
 
 			<div class="head_logo_div">
@@ -53,44 +49,34 @@
 		<div class="wrapBox" id="wrapBox" style="top:0px;">
 			<div class="box bg01" id="box">
 				<div class="box01_content">
-					<div class="head_div">
-						<div class="cycle_item">
-							<a href="https://github.com/MoeWhite19" class="cycle_a" id="github_a" target="_blank">
-								<span class="github_icon"></span>
-								<span class="github_text"><p class="item_name">GitHub</p></span>
-							</a>
-							<a href="null" class="cycle_a" id="weibo_a" target="_blank">
-								<span class="weibo_icon"></span>
-								<span class="weibo_text"><p class="item_name">微博</p> </span>
-							</a>
-							<a href="http://blog.whiteg.cn" class="cycle_a" id="blog_a" target="_blank">
-								<span class="blog_icon"></span>
-								<span class="blog_text"><p class="item_name"> 博客</p></span>
-							</a>
-							<div class="green_cycle">
-								<svg version="1.1" baseProfile="tiny" x="0px" y="0px" width="260px" height="260px" viewBox="0 0 260 260" xml:space="preserve" class="green_cycle_img">
-									<path fill="none" stroke="#009245" stroke-width="2" stroke-miterlimit="10" d="M259.207,129.953c0,71.244-57.755,129-129,129
+					<div class="cycle_item">
+						<a href="https://github.com/MoeWhite19" class="cycle_a" id="item_1" target="_blank">
+							<span class="cycle_icon_1"></span>
+							<span class="cycle_text"><p class="item_name">GitHub</p></span>
+						</a>
+						<a href="null" class="cycle_a" id="item_2" target="_blank">
+							<span class="cycle_icon_2"></span>
+							<span class="cycle_text"><p class="item_name">微博</p> </span>
+						</a>
+						<a href="http://blog.whiteg.cn" class="cycle_a" id="item_3" target="_blank">
+							<span class="cycle_icon_3"></span>
+							<span class="cycle_text"><p class="item_name"> 博客</p></span>
+						</a>
+						<svg version="1.1" baseProfile="tiny" x="0px" y="0px" width="260px" height="260px" viewBox="0 0 260 260" xml:space="preserve" class="green_cycle_img">
+							<path fill="none" stroke="#009245" stroke-width="2" stroke-miterlimit="10" d="M259.207,129.953c0,71.244-57.755,129-129,129
 	s-129-57.756-129-129c0-71.245,57.755-129,129-129" />
-								</svg>
-								<div class="yellow_cycle">
-									<svg class="yellow_cycle_img" version="1.1" baseProfile="tiny" x="0px" y="0px" width="240px" height="240px" viewBox="0 0 240 240" xml:space="preserve">
-										<path fill="none" stroke="#FFFF00" stroke-width="2" stroke-miterlimit="10" d="M1.344,120.055c0-65.722,53.278-119,119-119
+						</svg>
+						<svg class="yellow_cycle_img" version="1.1" baseProfile="tiny" x="0px" y="0px" width="240px" height="240px" viewBox="0 0 240 240" xml:space="preserve">
+							<path fill="none" stroke="#FFFF00" stroke-width="2" stroke-miterlimit="10" d="M1.344,120.055c0-65.722,53.278-119,119-119
 	c65.723,0,119,53.278,119,119s-53.277,119-119,119" />
-									</svg>
-									</svg>
-									<div class="blue_cycle">
-										<svg class="blue_cycle_img" version="1.1" x="0px" y="0px" width="220px" height="220px" viewBox="0 0 220 220" enable-background="new 0 0 220 220" xml:space="preserve">
-											<path fill="none" stroke="#0000FF" stroke-width="2" stroke-miterlimit="10" d="M110.273,218.98c-60.199,0-109-48.802-109-109" />
-											<path fill="none" stroke="#0000FF" stroke-width="2" stroke-miterlimit="10" d="M219.273,109.98" />
-											<path fill="#FFFFFF" stroke="#0000FF" stroke-width="2" stroke-miterlimit="10" d="M110.273,0.98" />
-										</svg>
-										<div class="head_img_div">
-											<img id="head" onclick="headclick()" class="head_img" src="images/pic/head.jpg">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						</svg>
+						<svg class="blue_cycle_img" version="1.1" x="0px" y="0px" width="220px" height="220px" viewBox="0 0 220 220" enable-background="new 0 0 220 220" xml:space="preserve">
+							<path fill="none" stroke="#0000FF" stroke-width="2" stroke-miterlimit="10" d="M110.273,218.98c-60.199,0-109-48.802-109-109" />
+							<path fill="none" stroke="#0000FF" stroke-width="2" stroke-miterlimit="10" d="M219.273,109.98" />
+							<path fill="#FFFFFF" stroke="#0000FF" stroke-width="2" stroke-miterlimit="10" d="M110.273,0.98" />
+						</svg>
+
+						<img id="head" onclick="headclick()" class="head_img" src="images/pic/head.jpg">
 					</div>
 					<h1 class="title">依玖梦白</h1>
 					<h2 class="title_h2">名为小樱花，意为白罂粟</h2>
@@ -306,7 +292,7 @@
 							<a href="http://yun.whiteg.cn" target="_blank">私云</a>
 						</li>
 						<li class="email_items">
-							<a href="mailto:moewhite19@163.com" target="_self">邮箱</a>
+							<a title="2017/03/2 07:59:09" class="show_time" target="_self">邮箱</a>
 						</li>
 						<div class="clear"></div>
 					</ul>
@@ -316,14 +302,12 @@
 					<h3>©2016-2018 Powered by
 			<p title="Thanks" target="_blank"><a title="全栈大佬" href="https://www.coolecho.net/">Cononico's 绘枫和畅</a> | <a href='https://github.com/0936zz'>0936zz</a> | <a title="你想干什么？" href="http://whiteg.cn">MoeWhite19 依玖梦白</a></p>
 			<p title="你的名字?" target="_blank">友人帐&nbsp;&nbsp;-<a title="冷月葬玫瑰" href="http://www.lonelyor.org">lonelyor</a>-&nbsp;&nbsp;-<a title="这家伙已经放弃了git(笑" href="https://my.oschina.net/0936zz">0936zz</a>-</p>
-			<p title="3/2/2017 07:59:09" name="show_time" style="cursor: progress;">时间</p>
+			<p title="2017/03/2 07:59:09" name="show_time" style="cursor: progress;">时间</p>
 			<!--a href="http://www.miitbeian.gov.cn/" title="beian" target="_blank">粤ICP备*******号</a-->
 		  </h3>
 				</div>
 			</foot>
 		</div>
-
-		<script type="text/javascript" src="js/project.js"></script>
 		<script type="text/javascript" src="js/about.js"></script>
 		<!--mp开始-->
 		<link rel="stylesheet" href="css/mp/mplayer.css">
@@ -380,7 +364,7 @@
 		<script src="js/mp/mplayer.js"></script>
 		<script src="js/mp/mplayer-list.js"></script>
 		<script src="js/mp/mplayer-functions.js"></script>
-		<script src="js/mp/jquery.nstSlider.js"></script>
+		<script src="js/mp/jquery.nstSlider.min.js"></script>
 		<script src="js/mp/mplayer-main.js"></script>
 		<!--mp结束-->
 	</body>

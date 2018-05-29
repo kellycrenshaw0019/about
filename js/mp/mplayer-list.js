@@ -18,6 +18,10 @@
  * lrc为歌词，请用\n或\r将每行歌词隔开，否则无法识别
  * slrc为歌词文件路径 可有可无
  */
+//获取网易云音乐
+function music163(i){
+	return "http://music.163.com/song/media/outer/url?id="+i+".mp3"
+}
 var mplayer_song = [
 	[{
 			"basic": true,
@@ -28,24 +32,24 @@ var mplayer_song = [
 		{
 			"name": "最后的旅行",
 			"singer": "Rainton桐",
-			"img": "http://p1.music.126.net/8qhWDWoNejyMcAAwAm2pNA==/17752714742397400.jpg?param=130y130",
-			"src": "audio/zuihoudeluxin.mp3",
+			"img": "http://p1.music.126.net/8qhWDWoNejyMcAAwAm2pNA==/17752714742397400.jpg?param=177y177",
+			"src": music163("423703394"),
 			"lrc": "[00:00.00]歌词加载中...",
 			"slrc":"audio/lrc/zuihoudeluxin.lrc"
 		},
 		{
-			"name": "依伊-致上杉绘梨衣（《龙族》同人）",
-			"singer": "琢彻",
-			"img": "http://p1.music.126.net/J-ciggWVRzfg1zch7sBJNQ==/18198016951733246.jpg?param=130y130",
-			"src": "audio/eyii.mp3",
+			"name": "樱花的短篇（奏(かなで) ）",
+			"singer": "千陵安浅",
+			"img": "http://p1.music.126.net/5boOknJ-Oo1Dr0o2IF690g==/16579535835744609.jpg?param=177y177",
+			"src": music163("41671021"),
 			"lrc": "[00:00.00]歌词加载中...",
 			"slrc":"audio/lrc/eyii.lrc"
 		},
 		{
-			"name": "樱花的短篇（奏(かなで) ）",
-			"singer": "千陵安浅",
-			"img": "http://p1.music.126.net/5boOknJ-Oo1Dr0o2IF690g==/16579535835744609.jpg?param=130y130",
-			"src": "audio/sakura.mp3",
+			"name": "依伊-致上杉绘梨衣（《龙族》同人）",
+			"singer": "琢彻",
+			"img": "http://p1.music.126.net/J-ciggWVRzfg1zch7sBJNQ==/18198016951733246.jpg?param=177y177",
+			"src": music163("423015999"),
 			"lrc": "[00:00.00]歌词加载中...",
 			"slrc":"audio/lrc/eyii.lrc"
 		}
@@ -60,7 +64,7 @@ var mplayer_song = [
 			"name": "I'm So Happy",
 			"singer": "中原龍太郎",
 			"img": "http://p1.music.126.net/cxjF4-0CX9TXMF50zxgxXg==/2426622162526064.jpg?param=177y177",
-			"src": "audio/happy.mp3",
+			"src": music163("26123157"),
 			"lrc": "",
 			"slrc":"audio/lrc/happy.lrc"
 		},
@@ -75,7 +79,7 @@ var mplayer_song = [
 			"name": "Undertale",
 			"singer": "Toby Fox",
 			"img": "http://p4.music.126.net/oZe-JSuWYAR8zSa29g9g0g==/3254554423361647.jpg?param=177y177",
-			"src": "audio/Toby_Fox-Undertale.mp3",
+			"src": music163("39227624"),
 			"lrc": ""
 		}
 	]

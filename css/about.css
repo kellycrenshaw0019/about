@@ -207,7 +207,6 @@ body {
 	margin: 0 auto;
 	height: 400px;
 }
-
 .cycle_item {
 	width: 400px;
 	height: 400px;
@@ -216,6 +215,18 @@ body {
 	position: relative;
 	text-align: center;
 }
+
+.cycle_item_b {
+	text-align: center;
+}
+.cycle_item_b .cycle_a{
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;
+}
+.cycle_item_b .cycle_text{
+	display: none;
+	}
 
 .green_cycle_img,
 .yellow_cycle_img,
@@ -274,34 +285,6 @@ body {
 	animation-iteration-count: infinite;
 	animation-direction: normal;
 	margin: 90px;
-}
-
-.svg-wrapper {
-	margin-top: 0;
-	position: relative;
-	width: 250px;
-	/*make sure to use same height/width as in the html*/
-	height: 40px;
-	display: inline-block;
-	border-radius: 3px;
-	margin-left: 5px;
-	margin-right: 5px
-}
-
-.svg-wrapper:hover #shape {
-	stroke-dasharray: 50 0;
-	stroke-width: 3px;
-	stroke-dashoffset: 0;
-	stroke: #06D6A0;
-}
-
-#shape {
-	stroke-width: 6px;
-	fill: transparent;
-	stroke: #009FFD;
-	stroke-dasharray: 120 500;
-	stroke-dashoffset: -360;
-	transition: 1s all ease;
 }
 
 .cycle_a {
@@ -1031,7 +1014,7 @@ body {
 		height: auto;
 	}
 	.cycle_item a {
-		display: none;
+		display: unset;
 	}
 	.box01_content .title {
 		font-size: 1em;

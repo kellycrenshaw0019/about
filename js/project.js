@@ -1,20 +1,49 @@
+var h = window.innerHeight;
+var w = window.innerWidth;
 var debug = false; //调试模式
-var openTime=0;
+var openTime = 0;
+var badcont = 0;
+
+function bad() {
+	byid("head").src = "BadAppleImg/" + "BadApple_" + pad(badcont, 4) + ".svg";
+	badcont++;
+}
+//var bader = setInterval(bad,33);
+function pad(num, n) {
+	var len = num.toString().length;
+	for(; len < n; len++) {
+		num = "0" + num;
+	}
+	return num;
+}
+
+//运行速度测试fun函数，cont次数（默认500次）
+function funTest(fun,cont,data,data2){
+	if(cont==undefined) cont=500;
+	console.log("开始测试  "+console.dir(fun)+" 次数 "+cont)
+	timer.start();
+	for(var i=0;i<cont;i++){fun(data,data2)}
+	console.log("耗时"+timer.stop()+"毫秒 运行次数:"+cont);
+}
+
 //加载完成后运行
 function loaddone() {
 	cycle(-360);
 	//加载时间计时结束
 	var t = new Date();
-	console.log("网页加载耗时" + (t.getTime() - openTime) + "毫秒");
+	console.log("网页加载耗时" + timer.stop()/1000 + "秒");
 	lastInfo();
+	if(w < 750) {
+		cycle_b(false);
+	}
+
 }
 //然并卵的入口
 function about_main() {
 	//加载时间计时开始
-	var t = new Date();
-	openTime = t.getTime();
+	timer.start();
 	//然并卵的检测分辨率
-	if(document.documentElement.clientWidth < 500) {
+	if(w < 500) {
 		alert('当前屏幕分辨率过低，可能无法显示全部内容');
 	}
 	//测试用用
@@ -35,53 +64,67 @@ function about_main() {
 	});*/
 	cycle(0, 0);
 }
+var timer = {
+	time: undefined,
+	start: function() {
+		var t = new Date();
+		time = t.getTime();
+	},
+	stop: function() {
+		var t = new Date();
+		return t - time;
+	}
+}
 //统计访问时间
 function lastInfo() {
 	var tdate = new Date();
-	var last = getCookie("runInfo");
+	var last = cokie.get("runInfo");
 	if(last == null) {
 		last = {
 			"day": tdate.toLocaleString(),
 			"time": tdate.getTime(),
 			"cont": 1
 		}
-		setCookie("runInfo", JSON.stringify(last));
+		cokie.set("runInfo", JSON.stringify(last));
 		console.log("初次见面，还请多多指教");
 	} else {
-		last = JSON.parse(getCookie("runInfo"));
+		last = JSON.parse(cokie.get("runInfo"));
 		console.log("上次访问时间" + last.day);
 		console.log("统计访问次数" + last.cont);
 		last.day = tdate.toLocaleString();
 		last.time = tdate.getTime();
-		if(tdate.getTime()-last.day<600000) last.cont++;//十分钟之内只统计一次访问次数
-		setCookie("runInfo", JSON.stringify(last));
+		if(tdate.getTime() - last.day < 60000) last.cont++; //1分钟之内只统计一次访问次数
+		cokie.set("runInfo", JSON.stringify(last));
 	}
 
 }
-//写cookies
-function setCookie(name, value) {
-	var Days = 30;
-	var exp = new Date();
-	exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-	document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+//Cookie
+var cokie = {
+	//写cookies
+	set: function(name, value) {
+		var Days = 30;
+		var exp = new Date();
+		exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+		document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+	},
+
+	//读取cookies
+
+	get: function(name) {
+		var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+		if(arr = document.cookie.match(reg)) return unescape(arr[2]);
+		else return null;
+	},
+
+	//删除cookies
+
+	del: function(name) {
+		var exp = new Date();
+		exp.setTime(exp.getTime() - 1);
+		var cval = this.del(name);
+		if(cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+	}
 }
-
-//读取cookies
-
-function getCookie(name) {
-	var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-	if(arr = document.cookie.match(reg)) return unescape(arr[2]);
-	else return null;
-}
-
-//删除cookies
-
-function delCookie(name) {
-	var exp = new Date();
-	exp.setTime(exp.getTime() - 1);
-	var cval = getCookie(name);
-	if(cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
-} 
 //图片预加载
 function preLoadImg() {
 	var img = new Image();
@@ -103,21 +146,21 @@ function cycle(a, b) {
 	for(var i = 0; i < cycarr.length; i++) {
 		aa += 120;
 		cycarr[i].style.animation = "none"
-		cycarr[i].style.transform = "rotate(" + (aa-(aa*2)) + "deg) translateX(+" + b + "px) rotate(" + aa + "deg)";
+		cycarr[i].style.transform = "rotate(" + (aa - (aa * 2)) + "deg) translateX(+" + b + "px) rotate(" + aa + "deg)";
 	}
 }
 //气泡变形
-var cycle_b_flag=false;
+var cycle_b_flag = false;
+
 function cycle_b(b) {
-	var cycarr = document.getElementsByClassName("cycle_a");
-	if(cycle_b_flag = !cycle_b_flag||b) {
-		for(var i = 0; i < cycarr.length; i++) {
-			cycarr[i].classList.add("cycle_a_b")
-		}
+	var cycarr = document.getElementsByClassName("cycle_item");
+	if(b != undefined) cycle_b_flag = b;
+	if(cycle_b_flag = !cycle_b_flag) {
+
+		cycarr[0].classList.add("cycle_item_b")
+
 	} else {
-		for(var i = 0; cycarr.length < 3; i++) {
-			cycarr[i].classList.remove("cycle_a_b")
-		}
+		cycarr[0].classList.remove("cycle_item_b")
 	}
 }
 
@@ -126,25 +169,20 @@ function byid(s) {
 }
 
 //动态执行 调试用
-function ev() {
-	var a = byid('mydebug').innerText;
-	//var a = byid('mydebug').innerText.replace(/<br>/g, "\n").replace(/&nbsp;/g, ' ');
-	if(a == '') {
-		window.open('http://music.163.com/m/user/home?id=40632376');
-	} else {
-		try {
-			eval(a);
-		} catch(err) {
-			alert(err.message);
-		}
+function ev(msg) {
+	try {
+		eval(a);
+	} catch(err) {
+		alert(err.message);
 	}
 }
 
 //主动调试输出 如果k为true 那么覆盖输出否则累计
 var logflg = {
 	s: "",
-	i: 1
+	i: 2
 };
+
 function logout(m, k) {
 	var e = byid('mydebug');
 	if(k) {
@@ -155,16 +193,16 @@ function logout(m, k) {
 		m[m.length - 2] = en;
 		m = m.join("\n");
 		e.innerText = m;
-		logflg.i += 1;
+		logflg.i ++;
 	} else {
 		e.innerText = e.innerText + m + "\n";
 		logflg.s = m;
-		logflg.i = 1;
+		logflg.i = 2;
 	}
 }
 
 //计算间隔天数
-function getDateDiff(st,en){
+function getDateDiff(st, en) {
 	var BirthDay = new Date(st);
 	var today;
 	if(en != undefined) {
@@ -189,12 +227,12 @@ function getDateDiff(st,en){
 //更新存活时间
 function show_date_time() {
 	var tm = document.getElementsByName('show_time');
-	for(var i=0;i<tm.length;i++) {
+	for(var i = 0; i < tm.length; i++) {
 		tm[i].innerText = "Sakura & Erii の主页已存活" + getDateDiff(tm[i].title);
 	}
 	window.setTimeout("show_date_time()", 1000);
 }
-show_date_time();
+var show_date_timer=setInterval(show_date_time,1000);
 
 function checkTime(i) {
 	if(i < 10) {

@@ -1,5 +1,3 @@
-var h = window.innerHeight;
-var w = window.innerWidth;
 //	var x_arr = new Array();
 //	var y_arr = new Array();
 var bg = document.getElementsByClassName("box_bg");
@@ -35,75 +33,8 @@ function boxOne() {
 }
 
 var gitMove = document.getElementById('github_a');
-var weiboMove = document.getElementById('weibo_a')
-var blogMove = document.getElementById('blog_a')
-/*	gitMove.style.transform="rotate(0deg) translateX(200px) rotate(-0deg)";	
-	weiboMove.style.transform="rotate(120deg) translateX(200px) rotate(-120deg)";	
-	blogMove.style.transform="rotate(240deg) translateX(200px) rotate(-240deg)";*/
-/*
-//	 原型轨迹
-	var x = y = m = 0;
-	for(var i = 0; i < 800; i++) {
-		if(i >= 400) {
-			x = m;
-			y = 200 + Math.sqrt(40000 - Math.pow(x - 200, 2));
-			m--;
-		} else {
-			x = m;
-			y = 200 - Math.sqrt(40000 - Math.pow(x - 200, 2));
-			m++;
-		}
-		x_arr[i] = x - 60;
-		y_arr[i] = parseInt(y) - 25;
-	}
-
-
-
-	var g_num = 0;
-	var w_num = 0;
-	var b_num = 0;
-
-	function movegit() {
-		if(g_num <= 750) {
-			// gitMove.css({"left":x_arr[g_num] + "px","top":y_arr[g_num]+"px"});
-			gitMove.style.left = x_arr[g_num] + 'px';
-			gitMove.style.top = y_arr[g_num] + 'px';
-			g_num += 3;
-		} else {
-			clearInterval(gitTimer);
-		}
-	}
-
-	function moveweibo() {
-		if(w_num <= 400) {
-			// weiboMove.css({"left":x_arr[w_num]+"px","top":y_arr[w_num]});
-			weiboMove.style.left = x_arr[w_num] + 'px';
-			weiboMove.style.top = y_arr[w_num] + 'px';
-			w_num += 3;
-		} else {
-			clearInterval(weiTimer);
-		}
-	}
-
-	function moveblog() {
-		if(b_num <= 90) {
-			// blogMove.css({"left":x_arr[b_num]+"px","top":y_arr[b_num]});
-			blogMove.style.left = x_arr[b_num] + 'px';
-			blogMove.style.top = y_arr[b_num] + 'px';
-			b_num += 3;
-		} else {
-			clearInterval(blogTimer);
-		}
-	}
-
-	movegit();
-	var gitTimer = setInterval(movegit, 2);
-	moveweibo();
-	var weiTimer = setInterval(moveweibo, 2);
-	moveblog();
-	var blogTimer = setInterval(moveblog, 2);
-	*/
-
+var weiboMove = document.getElementById('weibo_a');
+var blogMove = document.getElementById('blog_a');
 //第一屏文字加载
 var boxOneTimer = setInterval(boxOne, 2400);
 
@@ -123,6 +54,21 @@ var box02_timer;
 
 function hasClass(obj, cls) {
 	return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+}
+
+//头像点击事件
+var headflag = false;
+
+function headclick() {
+	/*	var h=byid("head")
+		if(headflag=!headflag){
+			h.style.transform="perspective(400px) rotateX(360deg) rotateZ(360deg)";
+			return;
+		}
+		h.style.transform="perspective(400px)";*/
+	var ran = RandomNum(-360, 360);
+	cycle(ran);
+	console.log(ran);
 }
 
 function addActive() {
@@ -147,60 +93,8 @@ function boxTow() {
 
 //滚动函数
 function divMove(obj, overHeight, num) {
-	//console.log("divout "+obj+" or "+overHeight+" and "+num);
 	var box = document.getElementById("wrapBox");
 	box.style.top = overHeight + "px";
-	//  if(obj.offsetTop >= overHeight){
-	//      //向下滚动
-	//      var timer;
-	//      timer = setInterval(function(){
-	//          if((obj.offsetTop - overHeight) <= num && (obj.offsetTop - overHeight) > 0){
-	//              obj.style.top  = overHeight + 'px';
-	//              clearInterval(timer);
-	//          }
-	//          else if((obj.offsetTop - overHeight) > num){
-	//              obj.style.top = obj.offsetTop - num + 'px';
-	//          }
-	// /*           else{
-	//              //停止滚动
-	//              //obj.style.top = obj.offsetTop - num + 'px';
-	//              clearInterval(timer);
-	//          }*/
-	//      },10);
-	//  }
-	//  else if(obj.offsetTop < overHeight){
-	//      //向上滚动
-	//      var timer;
-	//      timer = setInterval(function(){
-	//         if((overHeight - obj.offsetTop ) <= num && (overHeight - obj.offsetTop) > 0){
-	//             //最后定位
-	//             obj.style.top  = overHeight + 'px';
-	//			    clearInterval(timer);
-	//         } 
-	//          else if((overHeight - obj.offsetTop) > num){
-	//              //继续滚动
-	//              obj.style.top = obj.offsetTop + num +'px';
-	//          }
-	///*            else{
-	//              //停止滚动
-	//              clearInterval(timer);
-	//          }*/
-	//      },10);
-	//  }
-}
-//头像点击事件
-var headflag = false;
-
-function headclick() {
-	/*	var h=byid("head")
-		if(headflag=!headflag){
-			h.style.transform="perspective(400px) rotateX(360deg) rotateZ(360deg)";
-			return;
-		}
-		h.style.transform="perspective(400px)";*/
-	var ran = RandomNum(-360, 360);
-	cycle(ran);
-	console.log(ran);
 }
 //滚动函数
 function btnChange(index, flag, speed) {
@@ -410,55 +304,55 @@ function setTime_li() {
 	document.getElementById('timeUl').style.left = 20 - i + 'px';
 }
 //手势事件
-var startY, endY, oldY
+
 window.addEventListener('touchstart', touchStart, false);
 window.addEventListener('touchmove', touchMove, false);
 window.addEventListener('touchend', touchEnd, false);
-var startTop;
-var Movein = false;
-var TouchFlag = false;
-
-function touchStart(event) {
-	if(TouchFlag) return;
-	Movein = true;
-	wrapBox.classList.add("warpBox_tochMoveing");
-	// var touch =   event.originalEvent.targetTouches[0];
-	// startY = touch.pageY;
-	startY = event.touches[0].clientY;
-	startTop = parseInt(wrapBox.style.top);
-	//    console.log("开始滑动 " + startY);
-	Movein = true;
+var touchO ={
+	startY:0,
+	endY:0,
+	oldY:0,
+	flag: 0,
+	startTop: 0,
 }
-
-function touchMove(event) {
-	// var touch =  event.originalEvent.changedTouches[0];
-	// endY = touch.pageY;
-	if(!Movein) return;
-	endY = event.touches[0].clientY;
-	var movesize = endY - startY;
-	wrapBox.style.top = startTop + movesize + "px";
-	//    console.log("滑动 " + endY);
-}
-
-function touchEnd(event) {
-	if(TouchFlag) return
-	wrapBox.classList.remove("warpBox_tochMoveing");
-	if(oldY == endY) {
-		return;
+	function touchStart (event) {
+		if(touchO.flag == 0) {;
+			wrapBox.classList.add("warpBox_tochMoveing");
+			touchO.startY = event.touches[0].clientY;
+			touchO.startTop = parseInt(wrapBox.style.top);
+			touchO.flag = 1;
+		}
 	}
-	oldY = endY;
-	if(endY - startY > 100) {
-		//向上滑动
-		indexs = this.indexs - 1;
-		btnChange(indexs, true, 1);
-	} else if(startY - endY > 100) {
-		//向下滑动
-		indexs = this.indexs + 1;
-		btnChange(indexs, true, 1);
-	} else {
-		btnChange(indexs, true, 1);
+
+	function touchMove(event) {
+		if(touchO.flag == 1) {
+			touchO.endY = event.touches[0].clientY;
+			console.dir(event);
+			var movesize = touchO.endY - touchO.startY;
+			wrapBox.style.top = touchO.startTop + movesize + "px";
+		}
 	}
-	Movein = false;
-	TouchFlag = true;
-	setTimeout("TouchFlag=false", 900);
-}
+
+	function touchEnd(event) {
+		if(touchO.flag == 1) {
+			touchO.flag=2;
+			wrapBox.classList.remove("warpBox_tochMoveing");
+			if(touchO.oldY == touchO.endY) {
+				return;
+			}
+			touchO.oldY = touchO.endY;
+			if(touchO.endY - touchO.startY > 100) {
+				//向上滑动
+				indexs = indexs - 1;
+				btnChange(indexs, true, 1);
+			} else if(touchO.startY - touchO.endY > 100) {
+				//向下滑动
+				indexs = indexs + 1;
+				btnChange(indexs, true, 1);
+			} else {
+				btnChange(indexs, true, 1);
+			}
+			touchO.flag = -1;
+			setTimeout("touchO.flag=0", 900);
+		}
+	}

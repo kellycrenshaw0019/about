@@ -53,6 +53,7 @@ var player = new MPlayer({
 		console.log('当前静音状态：' + status);
 	}).on('changeMode', function() {
 		var $this = this;
+
 		var mode = modeText[$this.getPlayMode()];
 		$this.dom.container.find('.mp-mode').attr('title', mode);
 		console.log('播放模式已切换为：' + mode);
@@ -62,23 +63,54 @@ var player = new MPlayer({
 
 setEffects(player);
 
+function setEffects(player) {
+	// 滑块
+	player.dom.volRange.nstSlider({
+		"left_grip_selector": ".mp-vol-circle",
+		"value_changed_callback": function(cause, value) {
+			player.dom.container.find('.mp-vol-current').width(value + '%');
+			player.dom.volRange.trigger('change', [value]);
+		}
+	});
+	player.dom.container.find('.mp-mode').click(function() {
+		var dom = $(this);
+		var mode = player.getPlayMode();
+		dom.removeClass('mp-mode-' + mode);
+		mode = mode == 3 ? 0 : mode + 1;
+		player.changePlayMode(mode);
+		dom.addClass('mp-mode-' + mode);
+	});
+	player.dom.container.find('.mp-list-toggle').click(function() {
+		player.dom.container.find('.mp-list-box').toggleClass('mp-list-show');
+	});
+	player.dom.container.find('.mp-lrc-toggle').click(function() {
+		player.dom.container.find('.mp-lrc-box').toggleClass('mp-lrc-show');
+	});
+	player.dom.container.find('.mp-toggle').click(function() {
+		player.dom.container.toggleClass('mp-show');
+	});
+	player.dom.container.find('.mp-lrc-close').click(function() {
+		player.dom.container.find('.mp-lrc-box').removeClass('mp-lrc-show');
+	});
+}
+
 function loadlrc() {
 	var list = player.getCurrentList();
 	var song = player.getCurrentSong();
 	if(player.list[list][song].slrc != undefined) {
 		getURL(player.list[list][song].slrc, (function(str) {
-				var list = player.getCurrentList();
-				var song = player.getCurrentSong();
-				lrc = player._parseLrc(str)
-				player.list[list][song].lrc = lrc;
-				player._setLrc(lrc);
-				console.log(list +"  "+song+" 下载歌词 ");
-				player.list[list][song].slrc=undefined;
-				}), true);
-		}
-		var url = mplayer_song[list][song].slrc
+			var list = player.getCurrentList();
+			var song = player.getCurrentSong();
+			lrc = player._parseLrc(str)
+			player.list[list][song].lrc = lrc;
+			player._setLrc(lrc);
+			console.log(list + "  " + song + " 下载歌词 ");
+			player.list[list][song].slrc = undefined;
+		}), true);
 	}
-
-	/*getURL("audio/lrc/zuihoudeluxin.txt", (function(str) {
-		logout(str)
-	}), true);*/
+	var url = mplayer_song[list][song].slrc
+}
+/**
+ * @authors 0936zz (zz5840@qq.com)
+ * @date    2016-08-14 18:35
+ */

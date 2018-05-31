@@ -9,13 +9,14 @@
 		<meta name="apple-mobile-app-status-bar-style" content="black">
 		<meta name="description" content="名为小樱花，意为白罂粟。">
 		<meta name="keywords" content="依玖梦白,MoeWhite,19,白狼,whiteWolf_tengu,二次元,龙族,江南,Sakura,Erii,路明非,小樱花,上杉,绘梨衣,耶梦加得,夏弥，麻生真">
-		<meta name="application-name" content="Sakura&Erii">
+		<meta name="application-name" content="Sakura & Erii">
 
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="css/about.css">
 		<link rel="stylesheet" type="text/css" href="css/process.css">
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+		<link rel="stylesheet" href="css/mp/mplayer.css">
 		<script src="js/jquery-3.0.0.js"></script>
-		<script src="js/project.js" ></script>
+		<script src="js/project.js"></script>
 		<script src="js/zzbaidu.js"></script>
 	</head>
 
@@ -261,7 +262,56 @@
 					<img class="arrow_img" src="images/icon/arrowhead.png">
 				</div>
 			</div>
-
+			<div class="mp" id='mpi'>
+				<div class="mp-box">
+					<img src="images/mp/mplayer_error.png" alt="music cover" class="mp-cover">
+					<div class="mp-info">
+						<p class="mp-name">名字</p>
+						<p class="mp-singer">歌手</p>
+						<p><span class="mp-time-current">00:00</span>/<span class="mp-time-all">00:00</span></p>
+					</div>
+					<div class="mp-btn">
+						<button class="mp-prev" title="上一首"></button>
+						<button class="mp-pause" title="播放"></button>
+						<button class="mp-next" title="下一首"></button>
+						<button class="mp-mode" title="播放模式"></button>
+						<div class="mp-vol">
+							<button class="mp-vol-img" title="静音"></button>
+							<div class="mp-vol-range" data-range_min="0" data-range_max="100" data-cur_min="80">
+								<div class="mp-vol-current"></div>
+								<div class="mp-vol-circle"></div>
+							</div>
+						</div>
+					</div>
+					<div class="mp-pro">
+						<div class="mp-pro-current"></div>
+					</div>
+					<div class="mp-menu">
+						<button class="mp-list-toggle"></button>
+						<button class="mp-lrc-toggle"></button>
+					</div>
+				</div>
+				<div class="mp-lrc-box">
+					<ul class="mp-lrc"></ul>
+					<button class="mp-lrc-close"></button>
+				</div>
+				<button id="mp-toggle" class="mp-toggle">
+		<span class="mp-toggle-img"></span>
+	  </button>
+				<div class="mp-list-box">
+					<ul class="mp-list-title"></ul>
+					<table class="mp-list-table">
+						<thead>
+							<tr>
+								<th>歌名</th>
+								<th>歌手</th>
+								<th>时长</th>
+							</tr>
+						</thead>
+						<tbody class="mp-list"></tbody>
+					</table>
+				</div>
+			</div>
 			<foot id="foot" class="foot">
 				<h1 class="foot_title">Contact With Me</h1>
 				<div class="foot_info_main">
@@ -309,64 +359,10 @@
 			</foot>
 		</div>
 		<script type="text/javascript" src="js/about.js"></script>
-		<!--mp开始-->
-		<link rel="stylesheet" href="css/mp/mplayer.css">
-		<div class="mp" id='mpi'>
-			<div class="mp-box">
-				<img src="images/mp/mplayer_error.png" alt="music cover" class="mp-cover">
-				<div class="mp-info">
-					<p class="mp-name">名字</p>
-					<p class="mp-singer">歌手</p>
-					<p><span class="mp-time-current">00:00</span>/<span class="mp-time-all">00:00</span></p>
-				</div>
-				<div class="mp-btn">
-					<button class="mp-prev" title="上一首"></button>
-					<button class="mp-pause" title="播放"></button>
-					<button class="mp-next" title="下一首"></button>
-					<button class="mp-mode" title="播放模式"></button>
-					<div class="mp-vol">
-						<button class="mp-vol-img" title="静音"></button>
-						<div class="mp-vol-range" data-range_min="0" data-range_max="100" data-cur_min="80">
-							<div class="mp-vol-current"></div>
-							<div class="mp-vol-circle"></div>
-						</div>
-					</div>
-				</div>
-				<div class="mp-pro">
-					<div class="mp-pro-current"></div>
-				</div>
-				<div class="mp-menu">
-					<button class="mp-list-toggle"></button>
-					<button class="mp-lrc-toggle"></button>
-				</div>
-			</div>
-			<div class="mp-lrc-box">
-				<ul class="mp-lrc"></ul>
-				<button class="mp-lrc-close"></button>
-			</div>
-			<button id="mp-toggle" class="mp-toggle">
-		<span class="mp-toggle-img"></span>
-	  </button>
-			<div class="mp-list-box">
-				<ul class="mp-list-title"></ul>
-				<table class="mp-list-table">
-					<thead>
-						<tr>
-							<th>歌名</th>
-							<th>歌手</th>
-							<th>时长</th>
-						</tr>
-					</thead>
-					<tbody class="mp-list"></tbody>
-				</table>
-			</div>
-		</div>
 		<script src="js/mp/mplayer.js"></script>
 		<script src="js/mp/mplayer-list.js"></script>
-		<script src="js/mp/mplayer-functions.js"></script>
 		<script src="js/mp/jquery.nstSlider.min.js"></script>
 		<script src="js/mp/mplayer-main.js"></script>
-		<!--mp结束-->
 	</body>
 
 </html>

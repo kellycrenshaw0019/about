@@ -21,36 +21,74 @@
 	</head>
 
 	<body onload="loaddone()">
-		<header class="head">
 
-			<div class="head_logo_div">
-				<img class="logo_img" src="images/pic/head.jpg">
+		<div id="loade" style="transition: all 2s ease; width:1px;height: 100%;background-color: rgba(117, 171, 210, 1);position: fixed;z-index: 9;display: none;">
+			<div class="box01_content">
+				<div class="cycle_item">
+				<img id="load_head" style="position: fixed;" class="head_img" src="images/pic/head.jpg">
+				<svg id="L1" class="head_img" style="position:fixed;border: unset;margin: 100px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+				<circle fill="none" stroke="#5CACEE" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47">
+					<animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="5s" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform>
+				</circle>
+				<circle fill="none" stroke="#5CACEE" stroke-width="1" stroke-miterlimit="10" stroke-dasharray="10,10" cx="50" cy="50" r="39">
+					<animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="5s" from="0 50 50" to="-360 50 50" repeatCount="indefinite"></animateTransform>
+				</circle>
+				<g fill="#5CACEE">
+					<rect x="30" y="35" width="5" height="30">
+						<animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.1"></animateTransform>
+					</rect>
+					<rect x="40" y="35" width="5" height="30">
+						<animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.2"></animateTransform>
+					</rect>
+					<rect x="50" y="35" width="5" height="30">
+						<animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.3"></animateTransform>
+					</rect>
+					<rect x="60" y="35" width="5" height="30">
+						<animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.4"></animateTransform>
+					</rect>
+					<rect x="70" y="35" width="5" height="30">
+						<animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.5"></animateTransform>
+					</rect>
+				</g>
+			</svg>
+				</div>
+				<h1 class="title">依玖梦白</h1>
+				<h2 class="title_h2">名为小樱花，意为白罂粟</h2>
 			</div>
-			<div class="head_nav_div">
-				<nav class="head_nav">
-					<ul id="nav_ul">
-						<li class="nav_li_on nav_ul_li">Home</li>
-						<li class="nav_ul_li">Schedule</li>
-						<li class="nav_ul_li">Experience</li>
-						<li class="nav_ul_li">Hobby</li>
-						<li class="nav_ul_li">Contact</li>
-						<!--<p id="debugtex"></p>-->
-					</ul>
-				</nav>
-			</div>
-			<div class="clear"></div>
-		</header>
+		</div>
 
-		<ul class="float_btn" id="float_btn">
-			<li class="btn_on"></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
 		<div class="wrapBox" id="wrapBox" style="top:0px;">
+			<header class="head">
+
+				<div class="head_logo_div">
+					<img class="logo_img" src="images/pic/head.jpg">
+				</div>
+				<div class="head_nav_div">
+					<nav class="head_nav">
+						<ul id="nav_ul">
+							<li class="nav_li_on nav_ul_li">Home</li>
+							<li class="nav_ul_li">Schedule</li>
+							<li class="nav_ul_li">Experience</li>
+							<li class="nav_ul_li">Hobby</li>
+							<li class="nav_ul_li">Contact</li>
+							<li id="huam"></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="clear"></div>
+			</header>
+			<ul class="float_btn" id="float_btn">
+				<li class="btn_on"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<div id="arrow_img" class="arrow_div">
+				<img class="arrow_img" src="images/icon/arrowhead.png">
+			</div>
 			<div class="box bg01" id="box">
 				<div class="box01_content">
-					<div class="cycle_item">
+					<div id="cycle_item" class="cycle_item">
 						<a href="https://github.com/MoeWhite19" class="cycle_a" id="item_1" target="_blank">
 							<span class="cycle_icon_1"></span>
 							<span class="cycle_text"><p class="item_name">GitHub</p></span>
@@ -78,23 +116,21 @@
 						</svg>
 
 						<img id="head" onclick="headclick()" class="head_img" src="images/pic/head.jpg">
+						<!--<svg id ="bade" class="head_img"> </svg>-->
 					</div>
 					<h1 class="title">依玖梦白</h1>
 					<h2 class="title_h2">名为小樱花，意为白罂粟</h2>
 					<div id="box01_text">
-						<p class="box01_p"></p>
-						<p class="box01_p"></p>
-						<p class="box01_p">名为小樱花，</p>
-						<p class="box01_p">意为白罂粟。</p>
+						<p></p>
+						<p></p>
+						<p>名为小樱花，</p>
+						<p>意为白罂粟。</p>
 					</div>
-				</div>
-				<div class="arrow_div">
-					<img class="arrow_img" src="images/icon/arrowhead.png">
 				</div>
 			</div>
 
 			<div class="box bg02">
-				<div class="box02_content box_content box_content_2">
+				<div class="box_content box02_content ">
 					<div id='bar_container' class="bar_container">
 						<div class='bar mint' data-percent='55' data-skill='HTML5+CSS3'></div>
 						<div class='bar red' data-percent='50' data-skill='JavaScript'></div>
@@ -112,7 +148,6 @@
 						<p>我坐在天台上时光短促又漫长</p>
 						<p>风从我的耳边流过带来整个世界的声音</p>
 						<p></p>
-						<p></p>
 						<p>风中</p>
 						<p></p>
 						<p>有人弹唱</p>
@@ -122,10 +157,6 @@
 						<p>有人相爱 </p>
 					</div>
 					<div class="clear"></div>
-				</div>
-
-				<div class="arrow_div">
-					<img class="arrow_img" src="images/icon/arrowhead.png">
 				</div>
 
 			</div>
@@ -180,20 +211,17 @@
 								<h1>E.N.D</h1>
 								<p>Sakura</p>
 								<p>最好了</p>
-								<p name="play_music" style="cursor: pointer;"> BGM: <u>最后的旅行</u></p>
+								<p name="play_music" style="cursor: pointer" onclick="player.play()"> BGM: <u>最后的旅行</u></p>
 							</div>
 						</li>
 					</ul>
-					<div class="left_div" id="left_div">
-						<img class="left_arrow" src="images/icon/arrowleft.png">
-					</div>
-					<div class="right_div" id="right_div">
-						<img class="right_arrow" src="images/icon/arrowright.png">
-					</div>
 				</div>
 
-				<div class="arrow_div">
-					<img class="arrow_img" src="images/icon/arrowhead.png">
+				<div class="left_div" id="left_div">
+					<img class="left_arrow" src="images/icon/arrowleft.png">
+				</div>
+				<div class="right_div" id="right_div">
+					<img class="right_arrow" src="images/icon/arrowright.png">
 				</div>
 			</div>
 
@@ -257,9 +285,6 @@
 							</a>
 						</li>
 					</ul>
-				</div>
-				<div class="arrow_div">
-					<img class="arrow_img" src="images/icon/arrowhead.png">
 				</div>
 			</div>
 			<div class="mp" id='mpi'>
@@ -332,7 +357,7 @@
 
 						</li>-->
 						<li class="uname1_items">
-							<a id="mpt" onclick="ev()">歌单</a>
+							<a href="http://music.163.com/#/user/home?id=40632376" target="_blank">歌单</a>
 						</li>
 						<li class="qie_items">
 							<a href="http://whiteg.cn/jump/qq.html" target="_blank">企鹅</a>

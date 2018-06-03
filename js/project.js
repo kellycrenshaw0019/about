@@ -2,13 +2,58 @@ var h = window.innerHeight;
 var w = window.innerWidth;
 var debug = false; //调试模式
 var openTime = 0;
-var badcont = 0;
+var startTime;
+var flags = {};
+var log
+
+//解析XML
+function loadXml(str) {
+	if(str == null) {
+		return null;
+	}
+	var doc = str;
+	try {
+		doc = createXMLDOM();
+		doc.async = false;
+		doc.loadXML(str);
+	} catch(e) {
+		doc = $.parseXML(str);
+	}
+	return doc;
+}
+
+function test(b) {
+	var a
+	eval("a=b");
+	if(a) {
+		b = false;
+	}
+	if(!a) b = true;
+}
+flags.badi = 0
+flags.badf = 1
+var badts = [];
+var fps = []
+var cont = 0
+
+function loadBad() {
+	if(cont < 3) {
+		getURL("dat/" + cont + ".json", function(s) {
+			var obj = JSON.parse(s)
+			fps.push(obj)
+			loadBad();
+			cont++;
+		})
+	}
+}
 
 function bad() {
-	byid("head").src = "BadAppleImg/" + "BadApple_" + pad(badcont, 4) + ".svg";
-	badcont++;
+	byid("head").src = "BadAppleDat/" + "BadApple_" + pad(flags.badcont, 4) + ".svg";
+	flags.badcont++;
+	if(flags.badcont >= 6570) clearTimeout(bader);
 }
 //var bader = setInterval(bad,33);
+//数字长度
 function pad(num, n) {
 	var len = num.toString().length;
 	for(; len < n; len++) {
@@ -18,73 +63,71 @@ function pad(num, n) {
 }
 
 //运行速度测试fun函数，cont次数（默认500次）
-function funTest(fun,cont,data,data2){
-	if(cont==undefined) cont=500;
-	console.log("开始测试  "+console.dir(fun)+" 次数 "+cont)
-	timer.start();
-	for(var i=0;i<cont;i++){fun(data,data2)}
-	console.log("耗时"+timer.stop()+"毫秒 运行次数:"+cont);
+function funTest(fun, cont, data, data2, data3) {
+	if(cont == undefined) cont = 500;
+	console.log("开始测试  " + console.dir(fun) + " 次数 " + cont);
+	var time = new timer;
+	for(var i = 0; i < cont; i++) {
+		fun(data, data2, data3);
+	}
+	console.log("耗时" + time.stop() + "毫秒 运行次数:" + cont);
 }
 
 //加载完成后运行
 function loaddone() {
-	cycle(-360);
-	//加载时间计时结束
-	var t = new Date();
-	console.log("网页加载耗时" + timer.stop()/1000 + "秒");
 	lastInfo();
+	flags.boxOneTimer = setInterval(boxOne, 2400);
+	cycle(-360);
+	console.log("网页加载耗时" + startTime.stop() / 1000 + "秒");
 	if(w < 750) {
 		cycle_b(false);
 	}
-
+	addClick() //绑定按键
+	player.play(0, 0);
+	loaded();
+	touchO.flag = 0;
 }
 //然并卵的入口
 function about_main() {
 	//加载时间计时开始
-	timer.start();
+	startTime = new timer;
 	//然并卵的检测分辨率
 	if(w < 500) {
 		alert('当前屏幕分辨率过低，可能无法显示全部内容');
 	}
 	//测试用用
 	if(debug) logout('测试');
-
-	//点击播放音乐 未完成
-	var playes = document.getElementsByName('play_music');
-	for(i in playes) {
-		playes[i].onclick = function() {
-			player.play();
-			player.dom.container.toggleClass('mp-show');
-		};
-	};
-
 	//阻止手势
 	/*document.querySelector('body').addEventListener('touchstart', function (ev) {
 	    event.preventDefault();
 	});*/
 	cycle(0, 0);
 }
-var timer = {
-	time: undefined,
-	start: function() {
-		var t = new Date();
-		time = t.getTime();
-	},
-	stop: function() {
+/*计时函数
+ * 用法
+ * var time=new timer
+ * time.stop()
+ */
+function timer() {
+	var t = new Date();
+	var time = t.getTime();
+	this.stop = function() {
 		var t = new Date();
 		return t - time;
-	}
-}
+	};
+};
 //统计访问时间
+var last;
+
 function lastInfo() {
 	var tdate = new Date();
-	var last = cokie.get("runInfo");
+	last = cokie.get("runInfo");
 	if(last == null) {
 		last = {
 			"day": tdate.toLocaleString(),
 			"time": tdate.getTime(),
 			"cont": 1
-		}
+		};
 		cokie.set("runInfo", JSON.stringify(last));
 		console.log("初次见面，还请多多指教");
 	} else {
@@ -93,7 +136,7 @@ function lastInfo() {
 		console.log("统计访问次数" + last.cont);
 		last.day = tdate.toLocaleString();
 		last.time = tdate.getTime();
-		if(tdate.getTime() - last.day < 60000) last.cont++; //1分钟之内只统计一次访问次数
+		if(tdate.getTime() - last.time < 60000) last.cont++; //1分钟之内只统计一次访问次数
 		cokie.set("runInfo", JSON.stringify(last));
 	}
 
@@ -124,11 +167,11 @@ var cokie = {
 		var cval = this.del(name);
 		if(cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 	}
-}
+};
 //图片预加载
 function preLoadImg() {
 	var img = new Image();
-	img.src = "url"
+	img.src = "url";
 }
 
 //随机数
@@ -153,14 +196,14 @@ function cycle(a, b) {
 var cycle_b_flag = false;
 
 function cycle_b(b) {
-	var cycarr = document.getElementsByClassName("cycle_item");
+	var cyc = byid("cycle_item");
 	if(b != undefined) cycle_b_flag = b;
 	if(cycle_b_flag = !cycle_b_flag) {
 
-		cycarr[0].classList.add("cycle_item_b")
+		cyc.classList.add("cycle_item_b")
 
 	} else {
-		cycarr[0].classList.remove("cycle_item_b")
+		cyc.classList.remove("cycle_item_b")
 	}
 }
 
@@ -171,7 +214,7 @@ function byid(s) {
 //动态执行 调试用
 function ev(msg) {
 	try {
-		eval(a);
+		eval(msg);
 	} catch(err) {
 		alert(err.message);
 	}
@@ -182,8 +225,16 @@ var logflg = {
 	s: "",
 	i: 2
 };
+var huam = byid("huam")
+
+function test(m) {
+	huam.textContent = m;
+}
 
 function logout(m, k) {
+	log = m;
+	console.log(m);
+	/*
 	var e = byid('mydebug');
 	if(k) {
 		e.innerText = m;
@@ -193,12 +244,12 @@ function logout(m, k) {
 		m[m.length - 2] = en;
 		m = m.join("\n");
 		e.innerText = m;
-		logflg.i ++;
+		logflg.i++;
 	} else {
 		e.innerText = e.innerText + m + "\n";
 		logflg.s = m;
 		logflg.i = 2;
-	}
+	}*/
 }
 
 //计算间隔天数
@@ -206,9 +257,9 @@ function getDateDiff(st, en) {
 	var BirthDay = new Date(st);
 	var today;
 	if(en != undefined) {
-		today = new Date(en)
+		today = new Date(en);
 	} else {
-		today = new Date()
+		today = new Date();
 	};
 	var timeold = (today.getTime() - BirthDay.getTime());
 	var sectimeold = timeold / 1000;
@@ -232,7 +283,7 @@ function show_date_time() {
 	}
 	window.setTimeout("show_date_time()", 1000);
 }
-var show_date_timer=setInterval(show_date_time,1000);
+var show_date_timer = setInterval(show_date_time, 1000);
 
 function checkTime(i) {
 	if(i < 10) {
@@ -298,7 +349,7 @@ function getURL(url, fun, bool) {
 			fun(xmlhttp.responseText);
 		}
 	}
-	xmlhttp.open("GET", url, true);
+	xmlhttp.open("GET", url, bool);
 	xmlhttp.send();
 }
 about_main();

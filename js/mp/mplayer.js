@@ -3,7 +3,6 @@
  * @authors 0936zz(zz5840@qq.com)
  * 本插件依赖：jQuery 1.6及以上
  */
-var MPlayer = (function () {
 	function MPlayer(settings,callback) {
 		var $this = this;
 		init(callback);
@@ -711,5 +710,3 @@ var MPlayer = (function () {
 			return $this;
 		}
 	});
-	return MPlayer;
-}());

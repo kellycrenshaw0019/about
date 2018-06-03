@@ -32,7 +32,7 @@ var player = new MPlayer({
 		var song = $this.getCurrentSong(true);
 		var songName = song.name + ' - ' + song.singer;
 		console.log('即将播放' + songName + '，return false;可以取消播放');
-		loadlrc();
+		loadlrc(this.getCurrentList, this.getCurrentSong);
 	}).on('timeUpdate', function() {
 		var $this = this;
 		var lrc = $this.getLrc();
@@ -108,7 +108,6 @@ function loadlrc() {
 			player.list[list][song].slrc = undefined;
 		}), true);
 	}
-	var url = mplayer_song[list][song].slrc
 }
 /**
  * @authors 0936zz (zz5840@qq.com)

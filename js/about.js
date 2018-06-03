@@ -23,10 +23,8 @@ function loading() {
 
 function loaded() {
 	//warp.style.display = "unset";
-	loadiv.style.opacity = "0.5";
-	loadiv.style.height = "0";
+	loadiv.style.opacity = "0";
 	setTimeout("loadiv.style.display='none'", 5000);
-	setTimeout("loadiv.style.opacity = '0'", 4000);
 }
 //淡入文字
 indexs01 = 0;

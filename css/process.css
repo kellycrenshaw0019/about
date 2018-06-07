@@ -289,6 +289,7 @@
   -moz-transition:-moz-transform .15s linear;
   -o-transition:-o-transform .15s linear;
   -webkit-transition:-webkit-transform .15s linear;
+  text-align: center;
 }
 .bq li{
   margin:1em;
@@ -298,8 +299,9 @@
 .bq li h2{
   font-size:140%;
   font-weight:bold;
-  /*padding-bottom:10px;*/
-  padding: inherit !important;
+  /*! padding-bottom:10px; */
+  /*! padding: inherit !important; */
+  text-align: center;
 }
 .bq li p{
   font-family:"Reenie Beanie",arial,sans-serif;

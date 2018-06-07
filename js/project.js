@@ -4,8 +4,6 @@ var debug = false; //调试模式
 var openTime = 0;
 var startTime;
 var flags = {};
-var log
-
 //解析XML
 function loadXml(str) {
 	if(str == null) {
@@ -30,29 +28,89 @@ function test(b) {
 	}
 	if(!a) b = true;
 }
-flags.badi = 0
-flags.badf = 1
-var badts = [];
-var fps = []
-var cont = 0
 
-function loadBad() {
-	if(cont < 3) {
-		getURL("dat/" + cont + ".json", function(s) {
-			var obj = JSON.parse(s)
-			fps.push(obj)
-			loadBad();
-			cont++;
+var badApple = {};
+badApple.fps = [];
+badApple.cont = 0;
+badApple.i = 0;
+badApple.tick = true;
+badApple.li = 0;
+badApple.f = [];
+badApple.out = function() {
+	var cont = 0
+	var arr = []
+	for(var i in badApple.fps) {
+		if(cont >= 512) {
+			badApple.f.push(arr);
+			arr = [];
+			cont = 0;
+		}
+		arr.push(badApple.fps[i])
+		cont++
+	}
+}
+badApple.get = function() {
+	getURL("BadAppleDat/" + "BadApple_" + pad(badApple.li, 4) + ".svg", function(s) {
+		if(s != null) {
+			var p1 = loadXml(s).children[0].children;
+			var ar = []
+			for(var i = 0; i < p1.length; i++) {
+				var e = p1[i].attributes
+				var c = e.fill.nodeValue
+				var r = e.d.nodeValue
+				if(parseInt(c[1] + c[2], 16) < 86) {
+					r = null;
+				} else {
+					ar.push(r);
+				}
+			}
+			if(ar.length == 0) {
+				badApple.fps.push(["M"]);
+			} else {
+				badApple.fps.push(ar);
+			}
+			badApple.li++;
+			badApple.get();
+		}
+	})
+}
+
+badApple.load = function() {
+	if(badApple.cont < 11) {
+		getURL("dat/" + badApple.cont + ".json", function(s) {
+			var obj = JSON.parse(s);
+			badApple.fps.concat(obj);
+			badApple.load();
+			badApple.cont++;
 		})
 	}
 }
-
-function bad() {
-	byid("head").src = "BadAppleDat/" + "BadApple_" + pad(flags.badcont, 4) + ".svg";
-	flags.badcont++;
-	if(flags.badcont >= 6570) clearTimeout(bader);
+badApple.play = function() {
+	badApple.viev = byid("outSvg");
+	badApple.tick = true;
+	player.play(1, 0);
+	badApple.ing();
 }
-//var bader = setInterval(bad,33);
+badApple.ing = function() {
+	if(badApple.tick) {
+		var arr = [];
+		var gen = badApple.fps[badApple.i];
+		if(gen == undefined) {
+
+		} else {
+			test(badApple.li + "*" + badApple.i)
+			badApple.i++;
+			for(ii in gen) {
+				//arr.push('<path fill=\"' + gen[ii][0] + '"\" opacity=\"1.00\" d=\"' + gen[ii][1] + '\"></path>');
+				arr.push('<path fill=\"#FFFFFF"\" opacity=\"1.00\" d=\"' + gen[ii] + '\"></path>');
+			}
+			badApple.viev.innerHTML = arr.join("\n");
+			setTimeout(badApple.ing, 30)
+			arr = [];
+		}
+	}
+}
+
 //数字长度
 function pad(num, n) {
 	var len = num.toString().length;
@@ -71,37 +129,6 @@ function funTest(fun, cont, data, data2, data3) {
 		fun(data, data2, data3);
 	}
 	console.log("耗时" + time.stop() + "毫秒 运行次数:" + cont);
-}
-
-//加载完成后运行
-function loaddone() {
-	lastInfo();
-	flags.boxOneTimer = setInterval(boxOne, 2400);
-	cycle(-360);
-	console.log("网页加载耗时" + startTime.stop() / 1000 + "秒");
-	if(w < 750) {
-		cycle_b(false);
-	}
-	addClick() //绑定按键
-	player.play(0, 0);
-	loaded();
-	touchO.flag = 0;
-}
-//然并卵的入口
-function about_main() {
-	//加载时间计时开始
-	startTime = new timer;
-	//然并卵的检测分辨率
-	if(w < 500) {
-		alert('当前屏幕分辨率过低，可能无法显示全部内容');
-	}
-	//测试用用
-	if(debug) logout('测试');
-	//阻止手势
-	/*document.querySelector('body').addEventListener('touchstart', function (ev) {
-	    event.preventDefault();
-	});*/
-	cycle(0, 0);
 }
 /*计时函数
  * 用法
@@ -181,31 +208,6 @@ function RandomNum(Min, Max) {
 	var num = Min + Math.round(Rand * Range);
 	return num;
 }
-//气泡旋转 a为角度b为轴距
-function cycle(a, b) {
-	var cycarr = document.getElementsByClassName("cycle_a");
-	var aa = a;
-	if(b == undefined) b = 200;
-	for(var i = 0; i < cycarr.length; i++) {
-		aa += 120;
-		cycarr[i].style.animation = "none"
-		cycarr[i].style.transform = "rotate(" + (aa - (aa * 2)) + "deg) translateX(+" + b + "px) rotate(" + aa + "deg)";
-	}
-}
-//气泡变形
-var cycle_b_flag = false;
-
-function cycle_b(b) {
-	var cyc = byid("cycle_item");
-	if(b != undefined) cycle_b_flag = b;
-	if(cycle_b_flag = !cycle_b_flag) {
-
-		cyc.classList.add("cycle_item_b")
-
-	} else {
-		cyc.classList.remove("cycle_item_b")
-	}
-}
 
 function byid(s) {
 	return document.getElementById(s);
@@ -220,7 +222,7 @@ function ev(msg) {
 	}
 }
 
-//主动调试输出 如果k为true 那么覆盖输出否则累计
+//主动调试输出 
 var logflg = {
 	s: "",
 	i: 2
@@ -231,11 +233,13 @@ function test(m) {
 	huam.textContent = m;
 }
 
-function logout(m, k) {
-	log = m;
-	console.log(m);
-	/*
-	var e = byid('mydebug');
+function strOut(m) {
+	var e = byid('logWin');
+	e.innerText = m;
+}
+
+function logout(m) {
+	var e = byid('logWin');
 	if(k) {
 		e.innerText = m;
 	} else if(m == logflg.s) {
@@ -249,7 +253,7 @@ function logout(m, k) {
 		e.innerText = e.innerText + m + "\n";
 		logflg.s = m;
 		logflg.i = 2;
-	}*/
+	}
 }
 
 //计算间隔天数
@@ -281,7 +285,7 @@ function show_date_time() {
 	for(var i = 0; i < tm.length; i++) {
 		tm[i].innerText = "Sakura & Erii の主页已存活" + getDateDiff(tm[i].title);
 	}
-	window.setTimeout("show_date_time()", 1000);
+	//window.setTimeout("show_date_time()", 1000);
 }
 var show_date_timer = setInterval(show_date_time, 1000);
 
@@ -333,7 +337,7 @@ function loadScript(url, callback) {
  * fum:加载完成后运行
  * bool:为true时同步执行 反之异步
  */
-function getURL(url, fun, bool) {
+function getURL(url, fun, bool, err) {
 	var xmlhttp;
 	if(bool == undefined) bool = true;
 	if(window.XMLHttpRequest) {
@@ -347,9 +351,10 @@ function getURL(url, fun, bool) {
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			//logout(xmlhttp.responseText);
 			fun(xmlhttp.responseText);
+		} else {
+			fun(null, xmlhttp.status, xmlhttp.readyState);
 		}
 	}
 	xmlhttp.open("GET", url, bool);
 	xmlhttp.send();
 }
-about_main();

@@ -21,68 +21,32 @@
 	</head>
 
 	<body onload="loaddone()">
+		<header class="head">
 
-		<div id="loade" style="transition: all 2s ease; width:1px;height: 100%;background-color: rgba(117, 171, 210, 1);position: fixed;z-index: 9;display: none;">
-			<div class="box01_content">
-				<div class="cycle_item">
-				<img id="load_head" style="position: fixed;" class="head_img" src="images/pic/head.jpg">
-				<svg id="L1" class="head_img" style="position:fixed;border: unset;margin: 100px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
-				<circle fill="none" stroke="#5CACEE" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47">
-					<animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="5s" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform>
-				</circle>
-				<circle fill="none" stroke="#5CACEE" stroke-width="1" stroke-miterlimit="10" stroke-dasharray="10,10" cx="50" cy="50" r="39">
-					<animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="5s" from="0 50 50" to="-360 50 50" repeatCount="indefinite"></animateTransform>
-				</circle>
-				<g fill="#5CACEE">
-					<rect x="30" y="35" width="5" height="30">
-						<animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.1"></animateTransform>
-					</rect>
-					<rect x="40" y="35" width="5" height="30">
-						<animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.2"></animateTransform>
-					</rect>
-					<rect x="50" y="35" width="5" height="30">
-						<animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.3"></animateTransform>
-					</rect>
-					<rect x="60" y="35" width="5" height="30">
-						<animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.4"></animateTransform>
-					</rect>
-					<rect x="70" y="35" width="5" height="30">
-						<animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.5"></animateTransform>
-					</rect>
-				</g>
-			</svg>
-				</div>
-				<h1 class="title">依玖梦白</h1>
-				<h2 class="title_h2">名为小樱花，意为白罂粟</h2>
+			<div class="head_logo_div">
+				<img class="logo_img" src="images/pic/head.jpg">
 			</div>
-		</div>
-
+			<div class="head_nav_div">
+				<nav class="head_nav">
+					<ul id="nav_ul">
+						<li class="nav_li_on nav_ul_li">Home</li>
+						<li class="nav_ul_li">Schedule</li>
+						<li class="nav_ul_li">Experience</li>
+						<li class="nav_ul_li">Hobby</li>
+						<li class="nav_ul_li">Contact</li>
+						<li id="huam"></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="clear"></div>
+		</header>
+		<ul class="float_btn" id="float_btn">
+			<li class="btn_on"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
 		<div class="wrapBox" id="wrapBox" style="top:0px;">
-			<header class="head">
-
-				<div class="head_logo_div">
-					<img class="logo_img" src="images/pic/head.jpg">
-				</div>
-				<div class="head_nav_div">
-					<nav class="head_nav">
-						<ul id="nav_ul">
-							<li class="nav_li_on nav_ul_li">Home</li>
-							<li class="nav_ul_li">Schedule</li>
-							<li class="nav_ul_li">Experience</li>
-							<li class="nav_ul_li">Hobby</li>
-							<li class="nav_ul_li">Contact</li>
-							<li id="huam"></li>
-						</ul>
-					</nav>
-				</div>
-				<div class="clear"></div>
-			</header>
-			<ul class="float_btn" id="float_btn">
-				<li class="btn_on"></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
 			<div id="arrow_img" class="arrow_div">
 				<img class="arrow_img" src="images/icon/arrowhead.png">
 			</div>
@@ -116,7 +80,6 @@
 						</svg>
 
 						<img id="head" onclick="headclick()" class="head_img" src="images/pic/head.jpg">
-						<!--<svg id ="bade" class="head_img"> </svg>-->
 					</div>
 					<h1 class="title">依玖梦白</h1>
 					<h2 class="title_h2">名为小樱花，意为白罂粟</h2>
@@ -192,14 +155,6 @@
 						<li>
 							<div>
 								<br />
-								<h1>世界好大啊</h1>
-								<h1>原来外面的世界</h1>
-								<h1>是这个样子的啊</h1>
-							</div>
-						</li>
-						<li>
-							<div>
-								<br />
 								<h1>世界很温柔.....</h1>
 								<h1>我很喜欢这样的世界</h1>
 								<h1>但他不喜欢我</h1>
@@ -211,7 +166,7 @@
 								<h1>E.N.D</h1>
 								<p>Sakura</p>
 								<p>最好了</p>
-								<p name="play_music" style="cursor: pointer" onclick="player.play()"> BGM: <u>最后的旅行</u></p>
+								<p name="play_music" style="cursor: pointer" onclick="player.play(0,0)"> BGM: <u>最后的旅行</u></p>
 							</div>
 						</li>
 					</ul>
@@ -233,13 +188,17 @@
 							<a href="#">
 								<br />
 								<h2>世界好大啊</h2>
+								<h2>原来外面的时间</h2>
+								<h2>是这个这样子啊</h2>
 								<!--<p>Text Content #1</p>-->
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<h2>Title #2</h2>
-								<p>Text Content #2</p>
+								<svg id="outSvg" viewBox="0 0 512 384" version="1.1" xmlns="http://www.w3.org/2000/svg" l>
+									<path fill="#000000" opacity="1.00" d=" M 0.00 0.00 L 512.00 0.00 L 512.00 384.00 L 0.00 384.00 L 0.00 0.00 Z" />
+									<path fill="#FFFFFF" opacity="1.00" d=" M 0.00 0.00 L 512.00 0.00 L 512.00 384.00 L 0.00 34.00 L 0.00 0.00 Z" />
+								</svg>
 							</a>
 						</li>
 						<li>
@@ -372,7 +331,7 @@
 						<div class="clear"></div>
 					</ul>
 				</div>
-				<div id='mydebug' contentEditable="true"></div>
+				<div id='logWin' contentEditable="true"></div>
 				<div class="foot_power">
 					<h3>©2016-2018 Powered by
 			<p title="Thanks" target="_blank"><a title="全栈大佬" href="https://www.coolecho.net/">Cononico's 绘枫和畅</a> | <a href='https://github.com/0936zz'>0936zz</a> | <a title="你想干什么？" href="http://whiteg.cn">MoeWhite19 依玖梦白</a></p>

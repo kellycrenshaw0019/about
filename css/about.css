@@ -317,6 +317,7 @@ body {
  {
 	background-color: #42c9a3;
 	animation-name: num1;
+	transform: rotate(0deg) translateX(200px) rotate(-0deg);
 }
 
 #item_1 .cycle_icon_1 {
@@ -351,6 +352,7 @@ body {
 #item_2 {
 	background-color: #EAC251;
 	animation-name: num2;
+	transform: rotate(120deg) translateX(200px) rotate(-120deg);
 }
 
 #item_2 .cycle_icon_2 {
@@ -368,6 +370,7 @@ body {
 #item_3 {
 	background-color: #6DB3D9;
 	animation-name: num3;
+	transform: rotate(240deg) translateX(200px) rotate(-240deg);
 }
 
 #item_3 .cycle_icon_3 {
@@ -851,6 +854,9 @@ body {
 		0%{
 		transform: rotate(-120deg) translateX(10px) rotate(120deg);
 	}
+	60%{
+		transform: rotate(-24deg) translateX(250px) rotate(24deg);
+	}
 	100% {
 		transform: rotate(0deg) translateX(200px) rotate(-0deg);
 	}
@@ -860,6 +866,9 @@ body {
 	0%{
 		transform: rotate(0deg) translateX(10px) rotate(-0deg);
 	}
+		60%{
+		transform: rotate(96deg) translateX(250px) rotate(-96deg);
+	}
 	100% {
 		transform: rotate(120deg) translateX(200px) rotate(-120deg);
 	}
@@ -868,6 +877,9 @@ body {
 @keyframes num3 {
 		0%{
 		transform: rotate(120deg) translateX(10px) rotate(-120deg);
+	}
+		60%{
+		transform: rotate(216deg) translateX(250px) rotate(-216deg);
 	}
   100% {
 		transform: rotate(240deg) translateX(200px) rotate(-240deg);
@@ -921,7 +933,7 @@ body {
 	}
 	.box_content {
 		left: 0;
-		width: 100%;
+		width: auto;
 	}
 	.box02_content{
 		left: 2px;
@@ -948,9 +960,6 @@ body {
 	}
 	.float_btn {
 		right: 1em;
-	}
-	.box04_content {
-		padding: 1em 0 0 0;
 	}
 	.foot_info_main {
 		width: 90%;

@@ -56,6 +56,22 @@ var mplayer_song = [
 	],
 	[{
 			"basic": true,
+			"name": "M",
+			"singer": "某不知名白狼",
+			"img": "image/pic/head.jpg"
+		},
+		{
+			"name": "Bad Apple!!!",
+			"singer": "Alstroemeria",
+			"img": "http://p1.music.126.net/l6J6zceZI5YtkmD6-PMnmw==/888405395266525.jpg?param=117y117",
+//			"src": music163("22645196"),
+			"src": "audio/Alstroemeria_Records-Bad_Apple!!.mp3",
+			"lrc": "",
+			"slrc":"audio/lrc/Alstroemeria_Records-Bad_Apple!!.lrc"
+		}
+	],
+	[{
+			"basic": true,
 			"name": "Lu",
 			"singer": "某不知名白狼",
 			"img": "image/pic/head.jpg"

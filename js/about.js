@@ -1,30 +1,48 @@
 //	var x_arr = new Array();
 //	var y_arr = new Array();
 indexs = 0;
-
+//然并卵的入口
+function about_main() {
+	//加载时间计时开始
+	startTime = new timer;
+	//然并卵的检测分辨率
+	if(w < 500) {
+		alert('当前屏幕分辨率过低，可能无法显示全部内容');
+	}
+	//测试用用
+	if(debug) logout('测试');
+	//阻止手势
+	/*document.querySelector('body').addEventListener('touchstart', function (ev) {
+	    event.preventDefault();
+	});*/
+	loading();
+	lastInfo();
+}
 //加载动画
-//var hde = byid("head").getBoundingClientRect();//获取头像位置和大小
-var loadh = byid("load_head");
-var loadiv = byid("loade");
-var warp = byid("wrapBox");
-var loada = byid("L1");
-
-loading()
 function loading() {
 	//warp.style.display = "none";
-	loadiv.style.display = "unset";
+	/*loadiv.style.display = "unset";
 	loadh.src = "images/pic/head.jpg";
 	loadiv.style.width = "100%";
 	loadiv.style.height = "100%";
 	loadiv.style.opacity = "1";
 	loadh.style.opacity = "0";
-	setTimeout("loadh.style.opacity = '1'", 2500);
+	setTimeout("loadh.style.opacity = '1'", 2500);*/
 }
-
 function loaded() {
 	//warp.style.display = "unset";
-	loadiv.style.opacity = "0";
-	setTimeout("loadiv.style.display='none'", 5000);
+	/*loadiv.style.opacity = "0";
+	setTimeout("loadiv.style.display='none'", 5000);*/
+}
+//加载完成后运行
+function loaddone() {
+	console.log("网页加载耗时" + startTime.stop() / 1000 + "秒");
+	if(w < 750) {
+		cycle_b(false);
+	}
+	addClick() //绑定按键
+	loaded();
+	//player.play(0, 0);
 }
 //淡入文字
 indexs01 = 0;
@@ -32,7 +50,7 @@ var box01_p = document.getElementById('box01_text').children;
 for(var i = 0; i < box01_p.length; i++) {
 	box01_p[i].style.opacity = '0';
 }
-var boxOneTimer
+boxOneTimer = setInterval(boxOne, 2400);
 
 function boxOne() {
 	if(indexs != 0) {
@@ -41,7 +59,7 @@ function boxOne() {
 		box01_p[indexs01].style.opacity = '1';
 		indexs01++;
 	} else {
-		clearInterval(flags.boxOneTimer);
+		clearInterval(boxOneTimer);
 	}
 }
 
@@ -49,7 +67,6 @@ var gitMove = document.getElementById('github_a');
 var weiboMove = document.getElementById('weibo_a');
 var blogMove = document.getElementById('blog_a');
 //第一屏文字加载
-
 var f_btn = document.getElementById("float_btn").children;
 var nav_ul = document.getElementById('nav_ul').children;
 var wrapBox = document.getElementById("wrapBox");
@@ -60,13 +77,36 @@ var process = document.getElementById('bar_container').children; //进度条
 var box02_text = document.getElementById('box02_text').children; //第二屏文字
 var box02_timer;
 
-//头像点击事件
-var headflag = false;
-
 function headclick() {
 	var ran = RandomNum(-360, 360);
-	cycle(ran);
+	cycle(ran,300);
+	setTimeout("cycle("+ran+",200);",1000)
 	console.log(ran);
+}
+//气泡旋转 a为角度b为轴距
+function cycle(a, b) {
+	var cycarr = document.getElementsByClassName("cycle_a");
+	var aa = a;
+	if(b == undefined) b = 200;
+	for(var i = 0; i < cycarr.length; i++) {
+		aa += 120;
+		cycarr[i].style.animation = "unset"
+		cycarr[i].style.transform = "rotate(" + (aa - (aa * 2)) + "deg) translateX(+" + b + "px) rotate(" + aa + "deg)";
+	}
+}
+//气泡变形
+var cycle_b_flag = false;
+
+function cycle_b(b) {
+	var cyc = byid("cycle_item");
+	if(b != undefined) cycle_b_flag = b;
+	if(cycle_b_flag = !cycle_b_flag) {
+
+		cyc.classList.add("cycle_item_b")
+
+	} else {
+		cyc.classList.remove("cycle_item_b")
+	}
 }
 
 //第二屏动画
@@ -82,9 +122,13 @@ function boxTow() {
 }
 
 //滚动函数
-function divMove(obj, overHeight, num) {
-	var box = document.getElementById("wrapBox");
-	box.style.top = overHeight + "px";
+function divMove(overHeight) {
+	var wrapBox = document.getElementById("wrapBox");
+	if(overHeight==4){
+		wrapBox.style.top = (-h * 3 - foot.offsetHeight) + "px";
+	}else{
+		wrapBox.style.top = -overHeight + "00%";
+	}
 }
 //滚动函数
 function btnChange(index, flag, speed) {
@@ -103,14 +147,14 @@ function btnChange(index, flag, speed) {
 			indexs = 0;
 			f_btn[0].classList.add("btn_on")
 			nav_ul[0].classList.add("nav_li_on")
-			divMove(wrapBox, 0, 20 * speed);
+			divMove(indexs);
 		} else if(index > 0 && index <= 3) {
 			f_btn[index].classList.add("btn_on")
 			nav_ul[index].classList.add("nav_li_on")
-			divMove(wrapBox, -(height * indexs), 20 * speed);
+			divMove(indexs);
 		} else if(index == 4) {
 			indexs = 4;
-			divMove(wrapBox, (-height * 3 - fh), 20 * speed);
+			divMove(indexs);
 			nav_ul[index].classList.add("nav_li_on")
 		} else {
 			indexs = 4;
@@ -124,7 +168,7 @@ function btnChange(index, flag, speed) {
 		} else if(index > 0 && index <= 3) {
 			f_btn[index].classList.add("btn_on")
 			nav_ul[index].classList.add("nav_li_on")
-			wrapBox.style.top = (-height * indexs) + "px";
+			wrapBox.style.top = (-indexs * 100) + "%";
 		} else if(index == 4) {
 			indexs = 4;
 			wrapBox.style.top = (-height * 3 - fh) + "px";
@@ -192,7 +236,7 @@ var touchO = {
 	startY: 0,
 	endY: 0,
 	oldY: 0,
-	flag: -1,
+	flag: 0,
 	startTop: 0,
 }
 
@@ -324,16 +368,15 @@ function addClick() {
 	//监听窗口改变
 	window.onresize = function() {
 		//document.getElementsByTagName("html")[0].style.fontSize = document.documentElement.clientWidth / 20 + 'px';
-		var h = window.innerHeight;
-		var w = window.innerWidth;
 		if(w / h >= 1920 / 1080) {
 			iB = true;
-			btnChange(indexs);
+			divMove(indexs);
 
 		} else {
 			iB = false;
-			btnChange(indexs, false);
+			divMove(indexs, false);
 		}
 		setTime_li()
 	}
 }
+about_main()

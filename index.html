@@ -46,10 +46,10 @@
 			<li></li>
 			<li></li>
 		</ul>
+		<div id="arrow_img" class="arrow_div">
+			<img class="arrow_img" src="images/icon/arrowhead.png">
+		</div>
 		<div class="wrapBox" id="wrapBox" style="top:0px;">
-			<div id="arrow_img" class="arrow_div">
-				<img class="arrow_img" src="images/icon/arrowhead.png">
-			</div>
 			<div class="box bg01" id="box">
 				<div class="box01_content">
 					<div id="cycle_item" class="cycle_item">
@@ -95,12 +95,12 @@
 			<div class="box bg02">
 				<div class="box_content box02_content ">
 					<div id='bar_container' class="bar_container">
-						<div class='bar mint' data-percent='55' data-skill='HTML5+CSS3'></div>
-						<div class='bar red' data-percent='50' data-skill='JavaScript'></div>
-						<div class='bar lila' data-percent='30' data-skill='Java||C++'></div>
+						<div class='bar mint' data-percent='70' data-skill='HTML5+CSS3'></div>
+						<div class='bar red' data-percent='80' data-skill='JavaScript'></div>
+						<div class='bar lila' data-percent='35' data-skill='Java||C++'></div>
 						<div class='bar orange' data-percent='20' data-skill='威严'></div>
 						<div class="bar gray" data-percent='40' data-skill='腹黑'></div>
-						<div class="bar green" data-percent='20' data-skill='卖萌,,Ծ‸Ծ,,'></div>
+						<div class="bar green" data-percent='30' data-skill='卖萌,,Ծ‸Ծ,,'></div>
 					</div>
 					<div id="box02_text">
 						<h1>神眷之櫻花</h1>
@@ -246,56 +246,6 @@
 					</ul>
 				</div>
 			</div>
-			<div class="mp" id='mpi'>
-				<div class="mp-box">
-					<img src="images/mp/mplayer_error.png" alt="music cover" class="mp-cover">
-					<div class="mp-info">
-						<p class="mp-name">名字</p>
-						<p class="mp-singer">歌手</p>
-						<p><span class="mp-time-current">00:00</span>/<span class="mp-time-all">00:00</span></p>
-					</div>
-					<div class="mp-btn">
-						<button class="mp-prev" title="上一首"></button>
-						<button class="mp-pause" title="播放"></button>
-						<button class="mp-next" title="下一首"></button>
-						<button class="mp-mode" title="播放模式"></button>
-						<div class="mp-vol">
-							<button class="mp-vol-img" title="静音"></button>
-							<div class="mp-vol-range" data-range_min="0" data-range_max="100" data-cur_min="80">
-								<div class="mp-vol-current"></div>
-								<div class="mp-vol-circle"></div>
-							</div>
-						</div>
-					</div>
-					<div class="mp-pro">
-						<div class="mp-pro-current"></div>
-					</div>
-					<div class="mp-menu">
-						<button class="mp-list-toggle"></button>
-						<button class="mp-lrc-toggle"></button>
-					</div>
-				</div>
-				<div class="mp-lrc-box">
-					<ul class="mp-lrc"></ul>
-					<button class="mp-lrc-close"></button>
-				</div>
-				<button id="mp-toggle" class="mp-toggle">
-		<span class="mp-toggle-img"></span>
-	  </button>
-				<div class="mp-list-box">
-					<ul class="mp-list-title"></ul>
-					<table class="mp-list-table">
-						<thead>
-							<tr>
-								<th>歌名</th>
-								<th>歌手</th>
-								<th>时长</th>
-							</tr>
-						</thead>
-						<tbody class="mp-list"></tbody>
-					</table>
-				</div>
-			</div>
 			<foot id="foot" class="foot">
 				<h1 class="foot_title">Contact With Me</h1>
 				<div class="foot_info_main">
@@ -341,6 +291,56 @@
 		  </h3>
 				</div>
 			</foot>
+		</div>
+		<div class="mp" id='mpi'>
+			<div class="mp-box">
+				<img src="images/mp/mplayer_error.png" alt="music cover" class="mp-cover">
+				<div class="mp-info">
+					<p class="mp-name">名字</p>
+					<p class="mp-singer">歌手</p>
+					<p><span class="mp-time-current">00:00</span>/<span class="mp-time-all">00:00</span></p>
+				</div>
+				<div class="mp-btn">
+					<button class="mp-prev" title="上一首"></button>
+					<button class="mp-pause" title="播放"></button>
+					<button class="mp-next" title="下一首"></button>
+					<button class="mp-mode" title="播放模式"></button>
+					<div class="mp-vol">
+						<button class="mp-vol-img" title="静音"></button>
+						<div class="mp-vol-range" data-range_min="0" data-range_max="100" data-cur_min="80">
+							<div class="mp-vol-current"></div>
+							<div class="mp-vol-circle"></div>
+						</div>
+					</div>
+				</div>
+				<div class="mp-pro">
+					<div class="mp-pro-current"></div>
+				</div>
+				<div class="mp-menu">
+					<button class="mp-list-toggle"></button>
+					<button class="mp-lrc-toggle"></button>
+				</div>
+			</div>
+			<div class="mp-lrc-box">
+				<ul class="mp-lrc"></ul>
+				<button class="mp-lrc-close"></button>
+			</div>
+			<button id="mp-toggle" class="mp-toggle">
+		<span class="mp-toggle-img"></span>
+	  </button>
+			<div class="mp-list-box">
+				<ul class="mp-list-title"></ul>
+				<table class="mp-list-table">
+					<thead>
+						<tr>
+							<th>歌名</th>
+							<th>歌手</th>
+							<th>时长</th>
+						</tr>
+					</thead>
+					<tbody class="mp-list"></tbody>
+				</table>
+			</div>
 		</div>
 		<script type="text/javascript" src="js/about.js"></script>
 		<script src="js/mp/mplayer.js"></script>

@@ -1,6 +1,7 @@
 //	var x_arr = new Array();
 //	var y_arr = new Array();
 indexs = 0;
+indexs02 = 0;
 //然并卵的入口
 function about_main() {
 	//加载时间计时开始
@@ -114,8 +115,9 @@ function boxTow() {
 	if(indexs != 1) {
 		//暂无
 	} else if(indexs02 >= 0 && indexs02 < box02_text.length) {
-		box02_text[indexs02].style.clipPath = 'inset(0 0 0 0)';
+		box02_text[indexs02].style.right = '0px';
 		indexs02++;
+		console.log(indexs02)
 	} else {
 		clearInterval(box02_timer);
 	}
@@ -185,10 +187,9 @@ function btnChange(index, flag, speed) {
 		box02_timer = setInterval(boxTow, 1100);
 		flags.box02 = true;
 		indexs02 = 0;
-		for(var i = 0; i < box02_text.length; i++) {
-			box02_text[i].style.clipPath = 'inset(0 100% 0 0)';
-			box02_text[i].style.transition = 'all 3s';
-		}
+/*		for(var i = 0; i < box02_text.length; i++) {
+			box02_text[i].style.right = "-100%";
+		}*/
 	} else if(indexs == 2) {
 		setTime_li()
 	}

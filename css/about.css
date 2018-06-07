@@ -494,12 +494,13 @@ body {
 	color: #ffffff;
 	margin-top: 25px;
 	text-align: center;
-	/*! position: relative; */
+	position: relative;
 	right: -100%;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	transform: all 0.5s;
+	right: -100%;
 }
 
 .overline {
@@ -508,6 +509,8 @@ body {
 	border-bottom: 1px dashed #ffffff;
 	right: -100%;
 	transition: all 0.5s ease;
+	position: relative;
+	right: -100%;
 }
 
 #box02_text p {
@@ -516,9 +519,10 @@ body {
 	color: #ffffff;
 	line-height: 25px;
 	text-align: center;
-	/*! position: relative; */
+	position: relative;
 	right: -100%;
 	transition: all 1s;
+	right: -100%;
 }
 
 #box02_text p:hover {

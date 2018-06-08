@@ -26,7 +26,7 @@ function loading() {
 	loadh.src = "images/pic/head.jpg";
 	loadiv.style.width = "100%";
 	loadiv.style.height = "100%";
-	loadiv.style.opacity = "1";
+	loadiv.style.opacity = "1"; 
 	loadh.style.opacity = "0";
 	setTimeout("loadh.style.opacity = '1'", 2500);*/
 }
@@ -245,7 +245,7 @@ function touchStart(event) {
 	if(touchO.flag == 0) {;
 		wrapBox.classList.add("warpBox_tochMoveing");
 		touchO.startY = event.touches[0].clientY;
-		touchO.startTop = parseInt(wrapBox.style.top);
+		touchO.startTop = -indexs*100;
 		touchO.flag = 1;
 	}
 }
@@ -253,9 +253,8 @@ function touchStart(event) {
 function touchMove(event) {
 	if(touchO.flag == 1) {
 		touchO.endY = event.touches[0].clientY;
-//		console.dir(event);
 		var movesize = touchO.endY - touchO.startY;
-		wrapBox.style.top = touchO.startTop + movesize + "px";
+		wrapBox.style.top = touchO.startTop + (movesize/h*100)+"%";
 	}
 }
 

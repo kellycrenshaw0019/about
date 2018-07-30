@@ -126,10 +126,10 @@ function boxTow() {
 //滚动函数
 function divMove(overHeight) {
 	var wrapBox = document.getElementById("wrapBox");
-	if(overHeight==4){
+		if(overHeight==4){
 		wrapBox.style.top = (-h * 3 - foot.offsetHeight) + "px";
-	}else{
-		wrapBox.style.top = -overHeight + "00%";
+	}else {
+		wrapBox.style.top = -indexs*h+"px";
 	}
 }
 //滚动函数
@@ -368,14 +368,14 @@ function addClick() {
 	//监听窗口改变
 	window.onresize = function() {
 		//document.getElementsByTagName("html")[0].style.fontSize = document.documentElement.clientWidth / 20 + 'px';
+		h = window.innerHeight;
+		w = window.innerWidth;
 		if(w / h >= 1920 / 1080) {
 			iB = true;
-			divMove(indexs);
-
 		} else {
 			iB = false;
-			divMove(indexs, false);
 		}
+		divMove(indexs);
 		setTime_li()
 	}
 }

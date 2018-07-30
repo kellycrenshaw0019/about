@@ -238,7 +238,7 @@ function strOut(m) {
 	e.innerText = m;
 }
 
-function logout(m) {
+function logout(m,k) {
 	var e = byid('logWin');
 	if(k) {
 		e.innerText = m;
@@ -337,7 +337,7 @@ function loadScript(url, callback) {
  * fum:加载完成后运行
  * bool:为true时同步执行 反之异步
  */
-function getURL(url, fun, bool, err) {
+function getURL(url, fun, bool) {
 	var xmlhttp;
 	if(bool == undefined) bool = true;
 	if(window.XMLHttpRequest) {
@@ -351,8 +351,8 @@ function getURL(url, fun, bool, err) {
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			//logout(xmlhttp.responseText);
 			fun(xmlhttp.responseText);
-		} else {
-			fun(null, xmlhttp.status, xmlhttp.readyState);
+		} else if(xmlhttp.readyState == 4 && xmlhttp.status != 200){
+			fun(null, xmlhttp.status);
 		}
 	}
 	xmlhttp.open("GET", url, bool);

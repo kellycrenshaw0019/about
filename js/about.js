@@ -81,11 +81,21 @@ var box02_timer;
 function headclick() {
 	var ran = RandomNum(-360, 360);
 	cycle(ran,300);
-	setTimeout("cycle("+ran+",200);",1000)
-	console.log(ran);
+	setTimeout("cycle("+ran+",200);",2250)
+
 }
 //气泡旋转 a为角度b为轴距
 function cycle(a, b) {
+	var cycarr = document.getElementsByClassName("cycle_a");
+	var aa = a;
+	if(b == undefined) b = 200;
+	for(var i = 0; i < cycarr.length; i++) {
+		aa += 120;
+		cycarr[i].style.animation = "unset"
+		cycarr[i].style.transform = "rotate(" + (aa - (aa * 2)) + "deg) translateX(+" + b + "px) rotate(" + aa + "deg)";
+	}
+}
+function cycle2(a, b) {
 	var cycarr = document.getElementsByClassName("cycle_a");
 	var aa = a;
 	if(b == undefined) b = 200;

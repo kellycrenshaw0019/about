@@ -5,7 +5,7 @@
  * Free to use and abuse under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
  */
-(function($) {
+(function ($) {
 	/*
 	 * These are used for user interaction. This plugin assumes the user can
 	 * interact with one control at a time. For this reason it's safe to keep
@@ -44,16 +44,16 @@
 			else if (position === "middle") {
 				// Position naked end of the bar at the middle value.
 				_naked_bar_deltas = {
-					toEndWidth: handleWidth/2,
-					toBeginLeft: handleWidth/2,
-					toBeginWidth: handleWidth/2
+					toEndWidth: handleWidth / 2,
+					toBeginLeft: handleWidth / 2,
+					toBeginWidth: handleWidth / 2
 				};
 			}
 			else {
 				throw new Error('unknown position of setNakedBarDelta: ' + position);
 			}
 		},
-		'getSliderValuesAtPositionPx' : function (leftPx, rightPx) {
+		'getSliderValuesAtPositionPx': function (leftPx, rightPx) {
 			var $this = this,
 				leftPxInValue, rightPxInValue,
 				pixel_to_value_mapping_func = $this.data('pixel_to_value_mapping');
@@ -80,7 +80,7 @@
 		 *  move is performed, otherwise it's just ignored because weird
 		 *  values have been passed.
 		 */
-		'validateAndMoveGripsToPx' : function (nextLeftGripPositionPx, nextRightGripPositionPx) {
+		'validateAndMoveGripsToPx': function (nextLeftGripPositionPx, nextRightGripPositionPx) {
 			var $this = this;
 
 			var draggableAreaLengthPx = _methods.getSliderWidthPx.call($this) - $this.data('left_grip_width');
@@ -91,7 +91,7 @@
 			if (nextRightGripPositionPx <= draggableAreaLengthPx &&
 				nextLeftGripPositionPx >= 0 &&
 				nextLeftGripPositionPx <= draggableAreaLengthPx &&
-				(!$this.data('has_right_grip') || nextLeftGripPositionPx <= nextRightGripPositionPx) ) {
+				(!$this.data('has_right_grip') || nextLeftGripPositionPx <= nextRightGripPositionPx)) {
 
 				var prevMin = $this.data('cur_min'),
 					prevMax = $this.data('cur_max');
@@ -111,7 +111,7 @@
 		 * Update aria attributes of the slider based on the current
 		 * configuration of the slider.
 		 */
-		'updateAriaAttributes' : function () {
+		'updateAriaAttributes': function () {
 			var $this = this,
 				settings = $this.data('settings'),
 				$leftGrip = $this.find(settings.left_grip_selector);
@@ -155,7 +155,7 @@
 		 * should always be used internally to obtain the width of the
 		 * slider in pixels!
 		 */
-		'getSliderWidthPx' : function () {
+		'getSliderWidthPx': function () {
 			var $this = this;
 
 			//
@@ -177,14 +177,14 @@
 		 * using getRightGripPositionPx instead.
 		 *
 		 */
-		'getGripPositionPx' : function ($grip) {
-			return parseInt($grip.css('left').replace('px',''), 10);
+		'getGripPositionPx': function ($grip) {
+			return parseInt($grip.css('left').replace('px', ''), 10);
 		},
 		/*
 		 * Just the same as getGripPositionPx, but there is no need to provide
 		 * the $slider.
 		 */
-		'getLeftGripPositionPx' : function () {
+		'getLeftGripPositionPx': function () {
 			var $this = this,
 				settings = $this.data('settings'),
 				$leftGrip = $this.find(settings.left_grip_selector);
@@ -197,7 +197,7 @@
 		 * position should be defined, as it determines the position of the
 		 * bar.
 		 */
-		'getRightGripPositionPx' : function () {
+		'getRightGripPositionPx': function () {
 			var $this = this,
 				settings = $this.data('settings');
 
@@ -216,7 +216,7 @@
 		 * method deals with .width() returning a floating point number. All
 		 * the code in this plugin assumes an integer here!
 		 */
-		'getLeftGripWidth' : function () {
+		'getLeftGripWidth': function () {
 			var $this = this,
 				settings = $this.data('settings'),
 				$leftGrip = $this.find(settings.left_grip_selector);
@@ -228,14 +228,14 @@
 		 * check that the right grip actually exists. This method assumes it
 		 * does.
 		 */
-		'getRightGripWidth' : function () {
+		'getRightGripWidth': function () {
 			var $this = this,
 				settings = $this.data('settings'),
 				$rightGrip = $this.find(settings.right_grip_selector);
 
 			return Math.round($rightGrip.outerWidth());
 		},
-		'binarySearchValueToPxCompareFunc' : function (s, a, i) {
+		'binarySearchValueToPxCompareFunc': function (s, a, i) {
 			// Must return:
 			//
 			// s: element to search for
@@ -245,11 +245,11 @@
 			// -1 (s < a[i])
 			// 0  found (= a[i])
 			// 1  (s > a[i])
-			if (s === a[i])          { return 0; }  // element found exactly
+			if (s === a[i]) { return 0; }  // element found exactly
 			if (s < a[i] && i === 0) { return 0; }  // left extreme case e.g., a = [ 3, ... ], s = 1
-			if (a[i-1] <= s && s < a[i]) { return 0; } // s is between two elements, always return the rightmost
-			if (s > a[i])           { return 1;  }
-			if (s <= a[i-1])        { return -1; }
+			if (a[i - 1] <= s && s < a[i]) { return 0; } // s is between two elements, always return the rightmost
+			if (s > a[i]) { return 1; }
+			if (s <= a[i - 1]) { return -1; }
 			$.error('cannot compare s: ' + s + ' with a[' + i + ']. a is: ' + a.join(','));
 		},
 		/*
@@ -259,7 +259,7 @@
 		 * element from the array (e.g., in case we want to pick a field of an
 		 * array of objects)
 		 */
-		'binarySearch' : function(array, searchElement, getElementFunc, compareFunc) {
+		'binarySearch': function (array, searchElement, getElementFunc, compareFunc) {
 			var minIndex = 0;
 			var maxIndex = array.length - 1;
 			var currentIndex;
@@ -294,7 +294,7 @@
 		 * but that can be selected by the user when he moves a slider all the
 		 * way down the minimum and up to the maximum value.
 		 */
-		'haveLimits' : function () {
+		'haveLimits': function () {
 			var $this = this,
 				lowerLimit = $this.data('lower-limit'),
 				upperLimit = $this.data('upper-limit'),
@@ -312,7 +312,7 @@
 		 * This method is called whenever the style of the grips needs to get
 		 * updated.
 		 */
-		'refresh_grips_style' : function () {
+		'refresh_grips_style': function () {
 			var $this = this,
 				settings = $this.data('settings');
 
@@ -365,7 +365,7 @@
 		 *        200px;
 		 *
 		 */
-		'set_position_from_val' : function (cur_min, cur_max) {
+		'set_position_from_val': function (cur_min, cur_max) {
 			var $this = this;
 			//
 			// We need to understand how much pixels cur_min and cur_max
@@ -407,7 +407,7 @@
 		 * Set the position of the handles at the specified pixel points (taking
 		 * the whole slider width as a maximum point).
 		 */
-		'set_position_from_px' : function (leftPx, rightPx) {
+		'set_position_from_px': function (leftPx, rightPx) {
 			var $this = this;
 
 			//
@@ -435,7 +435,7 @@
 		 * leftPx and the right grip appears at rightPx. Note: leftPx can be >
 		 * rightPx.
 		 */
-		'set_handles_at_px' : function (leftPx, rightPx) {
+		'set_handles_at_px': function (leftPx, rightPx) {
 			var $this = this;
 			var settings = $this.data('settings');
 
@@ -482,7 +482,7 @@
 			return $this;
 
 		},
-		'drag_start_func_touch' : function (e, settings, $left_grip, $right_grip, is_touch) {
+		'drag_start_func_touch': function (e, settings, $left_grip, $right_grip, is_touch) {
 			var $this = this,
 				original_event = e.originalEvent,
 				touch = original_event.touches[0];
@@ -499,9 +499,9 @@
 				xldelta = slider_left - curX,
 				xrdelta = curX - (slider_left + $this.width());
 
-			if (ydelta > settings.touch_tolerance_value_bar_y  ||
+			if (ydelta > settings.touch_tolerance_value_bar_y ||
 				xldelta > settings.touch_tolerance_value_bar_x ||
-				xrdelta > settings.touch_tolerance_value_bar_x ) {
+				xrdelta > settings.touch_tolerance_value_bar_x) {
 
 				return;
 			}
@@ -513,8 +513,8 @@
 			_methods.drag_start_func.call($this, touch, settings, $left_grip,
 				$right_grip, is_touch);
 		},
-		'drag_start_func' : function (e, settings, $leftGrip, $rightGrip,
-		                              is_touch) {
+		'drag_start_func': function (e, settings, $leftGrip, $rightGrip,
+			is_touch) {
 
 			var $this = this;
 
@@ -522,8 +522,8 @@
 				',' + settings.value_bar_selector +
 				',' + settings.right_grip_selector).removeClass(
 
-				settings.animating_css_class
-			);
+					settings.animating_css_class
+				);
 
 			if (!methods.is_enabled.call($this)) { return; }
 
@@ -546,7 +546,7 @@
 				!$target.is(settings.right_grip_selector) &&
 				!$target.is(settings.value_bar_selector) &&
 				!targetIsPanelSelector &&
-				!$target.is($this) ) {
+				!$target.is($this)) {
 
 				return;
 			}
@@ -687,7 +687,7 @@
 				e.preventDefault();
 			}
 		},
-		'drag_move_func_touch' : function (e) {
+		'drag_move_func_touch': function (e) {
 			if (_is_mousedown === true) {
 				var original_event = e.originalEvent;
 				original_event.preventDefault();
@@ -695,7 +695,7 @@
 				_methods.drag_move_func(touch);
 			}
 		},
-		'drag_move_func' : function (e) {
+		'drag_move_func': function (e) {
 			if (_is_mousedown) {
 				// our slider element.
 				var $this = _$current_slider,
@@ -846,13 +846,13 @@
 				}
 			}
 		},
-		'drag_end_func_touch' : function (e) {
+		'drag_end_func_touch': function (e) {
 			var original_event = e.originalEvent;
 			original_event.preventDefault();
 			var touch = original_event.touches[0];
 			_methods.drag_end_func(touch);
 		},
-		'drag_end_func' : function (/* e */) {
+		'drag_end_func': function (/* e */) {
 			var $this = _$current_slider;
 			if (typeof $this !== 'undefined') {
 				_is_mousedown = false;
@@ -869,11 +869,11 @@
 					',' + settings.value_bar_selector +
 					',' + settings.right_grip_selector).addClass(
 
-					settings.animating_css_class
-				);
+						settings.animating_css_class
+					);
 			}
 		},
-		'get_rounding_for_value' : function (v) {
+		'get_rounding_for_value': function (v) {
 			var $this = this;
 			var rounding = $this.data('rounding');
 			var rounding_ranges = $this.data('rounding_ranges');
@@ -882,7 +882,7 @@
 
 				// then it means the rounding is not fixed, we should find the
 				// value in the roundings_array.
-				var roundingIdx  = _methods.binarySearch.call($this, rounding_ranges, v,
+				var roundingIdx = _methods.binarySearch.call($this, rounding_ranges, v,
 					// pick an element from the array
 					function (array, index) { return array[index].range; },
 
@@ -937,7 +937,7 @@
 		 *
 		 * NOTE: saves the new beforestart_min and begforestart_max as well.
 		 */
-		'notify_mouse_up_implicit' : function(isLeftGrip) {
+		'notify_mouse_up_implicit': function (isLeftGrip) {
 			var $this = this,
 				current_min_value = methods.get_current_min_value.call($this),
 				current_max_value = methods.get_current_max_value.call($this),
@@ -971,7 +971,7 @@
 		 * NOTE: this method may take the previous min/max value as input.
 		 *       if no arguments are provided the method blindly notifies.
 		 */
-		'notify_changed_implicit' : function (cause, prevMin, prevMax) {
+		'notify_changed_implicit': function (cause, prevMin, prevMax) {
 			var $this = this;
 
 			var force = false;
@@ -996,7 +996,7 @@
 
 			return force;
 		},
-		'notify_changed_explicit' : function (cause, prevMin, prevMax, curMin, curMax) {
+		'notify_changed_explicit': function (cause, prevMin, prevMax, curMin, curMax) {
 			var $this = this,
 				settings = $this.data('settings');
 
@@ -1009,7 +1009,7 @@
 
 			return $this;
 		},
-		'validate_params' : function (settings) {
+		'validate_params': function (settings) {
 			var $this = this;
 			var min_value = $this.data('range_min'),
 				max_value = $this.data('range_max'),
@@ -1062,7 +1062,7 @@
 		 * Maps a value between [minRange -- maxRange] into [0 -- n].
 		 * The target range will be an integer number.
 		 */
-		'rangemap_0_to_n' : function (val, n) {
+		'rangemap_0_to_n': function (val, n) {
 			var $this = this;
 			var rangeMin = $this.data('range_min');
 			var rangeMax = $this.data('range_max');
@@ -1076,12 +1076,12 @@
 		 * Maps a value between [0 -- max] back into [minRange -- maxRange].
 		 * The target range can be a floating point number.
 		 */
-		'inverse_rangemap_0_to_n' : function (val, max) {
+		'inverse_rangemap_0_to_n': function (val, max) {
 			var $this = this;
 			var rangeMin = $this.data('range_min');
 			var rangeMax = $this.data('range_max');
 
-			if (val <= 0)   { return rangeMin; }
+			if (val <= 0) { return rangeMin; }
 			if (val >= max) { return rangeMax; }
 
 			//
@@ -1096,8 +1096,8 @@
 
 	};
 	var methods = {
-		'_m' : function (m) { return _methods[m]; }, // for test, removed by Grunt
-		'teardown' : function () {
+		'_m': function (m) { return _methods[m]; }, // for test, removed by Grunt
+		'teardown': function () {
 			var $this = this;
 
 			// remove all data set with .data()
@@ -1121,9 +1121,9 @@
 
 			return $this;
 		},
-		'init' : function(options) {
+		'init': function (options) {
 			var settings = $.extend({
-				'animating_css_class' : 'nst-animating',
+				'animating_css_class': 'nst-animating',
 				// this is the distance from the value bar by which we should
 				// grab the left or the right handler.
 				'touch_tolerance_value_bar_y': 30,  // px
@@ -1141,7 +1141,7 @@
 				//     'grip_class' : '.nsti-slider-hi',
 				//     'panel_selector' : '.nst-slider-highlight-panel'
 				// },
-				'highlight' : undefined,
+				'highlight': undefined,
 
 				// Lets you specify the increment rounding for the slider handles
 				// for when the user moves them.
@@ -1162,9 +1162,9 @@
 				// dragged. This option is ignored if just one handle is used.
 				'crossable_handles': true,
 
-				'value_changed_callback': function(/*cause, vmin, vmax*/) { return; },
-				'user_mouseup_callback' : function(/*vmin, vmax, left_grip_moved*/) { return; },
-				'user_drag_start_callback' : function () { return; }
+				'value_changed_callback': function (/*cause, vmin, vmax*/) { return; },
+				'user_mouseup_callback': function (/*vmin, vmax, left_grip_moved*/) { return; },
+				'user_drag_start_callback': function () { return; }
 			}, options);
 
 			//
@@ -1179,9 +1179,9 @@
 			$document.unbind('mousemove.nstSlider');
 
 			$document.bind('mousemove.nstSlider', _methods.drag_move_func);
-			$document.bind('mouseup.nstSlider',   _methods.drag_end_func);
+			$document.bind('mouseup.nstSlider', _methods.drag_end_func);
 
-			return this.each(function() {
+			return this.each(function () {
 				//
 				// $this is like:
 				//
@@ -1297,7 +1297,7 @@
 									if (_before_keydown_pixel - _before_keyup_pixel < 0) {
 										// the grip was moved towards the right
 
-										for (i=_before_keyup_pixel; i<=searchUntil; i++) {
+										for (i = _before_keyup_pixel; i <= searchUntil; i++) {
 											// if the value at pixel i is different than
 											// the current value then we are good to go.
 											//
@@ -1313,7 +1313,7 @@
 									else {
 										// the grip was moved towards the left
 
-										for (i=_before_keyup_pixel; i>=0; i--) {
+										for (i = _before_keyup_pixel; i >= 0; i--) {
 
 											// if the value at pixel i is different than
 											// the current value then we are good to go.
@@ -1380,7 +1380,7 @@
 									break;
 							}
 
-							_before_keyup_pixel = _is_left_grip ?  nextLeft : nextRight;
+							_before_keyup_pixel = _is_left_grip ? nextLeft : nextRight;
 
 							// may write into cur_min, cur_max data...
 							_methods.validateAndMoveGripsToPx.call($this, nextLeft,
@@ -1446,7 +1446,7 @@
 				$container.bind('touchstart.nstSlider', function (e) {
 					_methods.drag_start_func_touch.call($this, e, settings, $left_grip, $right_grip, true);
 				});
-				$container.bind('touchend.nstSlider',  function (e) {
+				$container.bind('touchend.nstSlider', function (e) {
 					_methods.drag_end_func_touch.call($this, e);
 				});
 				$container.bind('touchmove.nstSlider', function (e) {
@@ -1461,15 +1461,15 @@
 				}
 			}); // -- each slider
 		},
-		'get_range_min' : function () {
+		'get_range_min': function () {
 			var $this = this;
 			return $this.data('range_min');
 		},
-		'get_range_max' : function () {
+		'get_range_max': function () {
 			var $this = this;
 			return $this.data('range_max');
 		},
-		'get_current_min_value' : function () {
+		'get_current_min_value': function () {
 			var $this = $(this);
 
 			var rangeMin = methods.get_range_min.call($this),
@@ -1504,7 +1504,7 @@
 
 			return min;
 		},
-		'get_current_max_value' : function () {
+		'get_current_max_value': function () {
 			var $this = $(this);
 
 			var rangeMin = methods.get_range_min.call($this),
@@ -1540,7 +1540,7 @@
 
 			return max;
 		},
-		'is_handle_to_left_extreme' : function () {
+		'is_handle_to_left_extreme': function () {
 			var $this = this;
 			if (_methods.haveLimits.call($this)) {
 				return $this.data('lower-limit') === methods.get_current_min_value.call($this);
@@ -1549,7 +1549,7 @@
 				return methods.get_range_min.call($this) === methods.get_current_min_value.call($this);
 			}
 		},
-		'is_handle_to_right_extreme' : function () {
+		'is_handle_to_right_extreme': function () {
 			var $this = this;
 			if (_methods.haveLimits.call($this)) {
 				return $this.data('upper-limit') === methods.get_current_max_value.call($this);
@@ -1559,7 +1559,7 @@
 			}
 		},
 		// just call set_position on the current values
-		'refresh' : function () {
+		'refresh': function () {
 			var $this = this;
 
 			// re-set the slider step if specified
@@ -1585,7 +1585,7 @@
 			_methods.notify_changed_implicit.call($this, 'refresh');
 			return $this;
 		},
-		'disable' : function () {
+		'disable': function () {
 			var $this = this,
 				settings = $this.data('settings');
 
@@ -1598,7 +1598,7 @@
 
 			return $this;
 		},
-		'enable' : function() {
+		'enable': function () {
 			var $this = this,
 				settings = $this.data('settings');
 
@@ -1611,7 +1611,7 @@
 
 			return $this;
 		},
-		'is_enabled' : function() {
+		'is_enabled': function () {
 			var $this = this;
 			return $this.data('enabled');
 		},
@@ -1619,7 +1619,7 @@
 		 * This one is the public method, called externally.
 		 * It sets the position and notifies in fact.
 		 */
-		'set_position' : function(min, max) {
+		'set_position': function (min, max) {
 			var $this = this;
 
 			var prev_min = $this.data('cur_min'),
@@ -1650,7 +1650,7 @@
 		 * density function (PDF).
 		 *
 		 */
-		'set_step_histogram' : function (histogram) {
+		'set_step_histogram': function (histogram) {
 			var $this = this;
 
 			$this.data('last_step_histogram', histogram);
@@ -1675,7 +1675,7 @@
 			// 1) normalize the pdf to sum to sliderWidthPx first
 			var i;
 			var histogram_sum = 0;
-			for (i=0; i<nbuckets; i++) {
+			for (i = 0; i < nbuckets; i++) {
 				histogram_sum += histogram[i];
 			}
 
@@ -1693,11 +1693,11 @@
 			}
 
 			// coefficient for normalization
-			var coeff = parseFloat(histogram_sum)/sliderWidthPx;
+			var coeff = parseFloat(histogram_sum) / sliderWidthPx;
 
 			// go normalize the histogram using this coefficient!
-			for (i=0; i<nbuckets; i++) {
-				histogram[i] = histogram[i]/coeff;
+			for (i = 0; i < nbuckets; i++) {
+				histogram[i] = histogram[i] / coeff;
 			}
 
 			// 2) now that the histogram is normalized, extract the cumulative
@@ -1707,9 +1707,9 @@
 			// We also build the inverted cdf, just the cdf read the other way
 			// around.
 			//
-			var cdf = [ histogram[0] ];  // points to pixels
-			for (i=1; i<nbuckets; i++) {
-				var cdf_x = cdf[i-1] + histogram[i];
+			var cdf = [histogram[0]];  // points to pixels
+			for (i = 1; i < nbuckets; i++) {
+				var cdf_x = cdf[i - 1] + histogram[i];
 				cdf.push(cdf_x);
 			}
 			cdf.push(sliderWidthPx);
@@ -1717,7 +1717,7 @@
 
 			// the first value here is always min_range as the cdf is supposed
 			// to start from 0 (also first pixel = min_range)
-			var pixel_to_value_lookup = [ $this.data('range_min') ];
+			var pixel_to_value_lookup = [$this.data('range_min')];
 
 			var last_filled = 0; // we've already filled 0
 
@@ -1730,7 +1730,7 @@
 				// get next item from cdf
 				var fill_up_to_px = parseInt(cdf.shift(), 10);
 				var price_for_cdf_bucket =
-					_methods.inverse_rangemap_0_to_n.call($this, cdf_bucket_count+1, nbuckets+1);
+					_methods.inverse_rangemap_0_to_n.call($this, cdf_bucket_count + 1, nbuckets + 1);
 
 				cdf_bucket_count++;
 
@@ -1741,7 +1741,7 @@
 				var diff = price_for_cdf_bucket - last_price_for_cdf_bucket;
 				for (i = last_filled; i < fill_up_to_px; i++) {
 					var next_price_for_cdf_bucket =
-						last_price_for_cdf_bucket + (diff * (i-last_filled+1) / fill_tot);
+						last_price_for_cdf_bucket + (diff * (i - last_filled + 1) / fill_tot);
 
 					pixel_to_value_lookup.push(next_price_for_cdf_bucket);
 
@@ -1754,7 +1754,7 @@
 					break;
 				}
 			}
-			pixel_to_value_lookup[pixel_to_value_lookup.length-1] = $this.data('range_max');
+			pixel_to_value_lookup[pixel_to_value_lookup.length - 1] = $this.data('range_max');
 
 			// 3) build lookup functions to extract pixels and values from the
 			// cdf and the inverted cdf.
@@ -1769,7 +1769,7 @@
 				// rightmost pixel if there is no exact match.
 				//
 				var suggestedPixel = _methods.binarySearch.call($this, pixel_to_value_lookup, value,
-					function(a, i) { return a[i]; },  // access a value in the array
+					function (a, i) { return a[i]; },  // access a value in the array
 					_methods.binarySearchValueToPxCompareFunc
 				);
 
@@ -1780,10 +1780,10 @@
 
 				// approx match: we need to check if it's closer to the value
 				// at suggestedPixel or the value at suggestedPixel-1
-				if ( Math.abs(pixel_to_value_lookup[suggestedPixel-1] - value) <
-					Math.abs(pixel_to_value_lookup[suggestedPixel] - value) ) {
+				if (Math.abs(pixel_to_value_lookup[suggestedPixel - 1] - value) <
+					Math.abs(pixel_to_value_lookup[suggestedPixel] - value)) {
 
-					return suggestedPixel-1;
+					return suggestedPixel - 1;
 				}
 				return suggestedPixel;
 			};
@@ -1803,7 +1803,7 @@
 		 * slider so that the slider can follow a linear step over the current
 		 * range again.
 		 */
-		'unset_step_histogram' : function () {
+		'unset_step_histogram': function () {
 			var $this = this;
 
 			$this.removeData('pixel_to_value_mapping');
@@ -1812,7 +1812,7 @@
 
 			return $this;
 		},
-		'set_range' : function (rangeMin, rangeMax) {
+		'set_range': function (rangeMin, rangeMax) {
 			var $this = this;
 
 			// get the current values
@@ -1849,7 +1849,7 @@
 		 * To work well, the slider must have background color set to
 		 * transparent in the CSS or not set.
 		 */
-		'highlight_range' : function(rangeMin, rangeMax) {
+		'highlight_range': function (rangeMin, rangeMax) {
 			var $this = this;
 			var settings = $this.data('settings');
 
@@ -1888,7 +1888,7 @@
 		 * Sets the increment rounding for the slider, see input parameters section
 		 * for more information.
 		 */
-		'set_rounding' : function (rounding) {
+		'set_rounding': function (rounding) {
 			var $this = this;
 
 			if (typeof rounding === 'string' && rounding.indexOf('{') > -1) {
@@ -1908,8 +1908,8 @@
 					if (rounding.hasOwnProperty(rounding_value)) {
 						var rounding_range = rounding[rounding_value];
 						roundings_array.push({
-							'range' : rounding_range,
-							'value' : rounding_value
+							'range': rounding_range,
+							'value': rounding_value
 						});
 					}
 				}
@@ -1925,7 +1925,7 @@
 
 			return $this;
 		},
-		'get_rounding' : function () {
+		'get_rounding': function () {
 			var $this = this;
 			return $this.data('rounding');
 		},
@@ -1936,7 +1936,7 @@
 		 * rounding: 1 v: 12.3     --> 12
 		 * rounding: 10 v: 12.6    --> 13
 		 */
-		'round_value_according_to_rounding' : function(v) {
+		'round_value_according_to_rounding': function (v) {
 			var $this = this;
 			var rounding = _methods.get_rounding_for_value.call($this, v);
 
@@ -1976,7 +1976,7 @@
 		 * is defined it will be used, otherwise a linear mapping is used for
 		 * the conversion.
 		 */
-		'value_to_px' : function (value) {
+		'value_to_px': function (value) {
 			var $this = this,
 				value_to_pixel_mapping_func = $this.data('value_to_pixel_mapping');
 
@@ -1993,7 +1993,7 @@
 
 	var __name__ = 'nstSlider';
 
-	$.fn[__name__] = function(method) {
+	$.fn[__name__] = function (method) {
 		/*
 		 * Just a router for method calls
 		 */

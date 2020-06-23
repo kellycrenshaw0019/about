@@ -23,6 +23,7 @@ function about_main() {
 
 //加载动画
 function loading() {
+    //坑未填
     //warp.style.display = "none";
     /*loadiv.style.display = "unset";
     loadh.src = "images/pic/head.jpg";
@@ -33,11 +34,6 @@ function loading() {
     setTimeout("loadh.style.opacity = '1'", 2500);*/
 }
 
-function loaded() {
-    //warp.style.display = "unset";
-    /*loadiv.style.opacity = "0";
-    setTimeout("loadiv.style.display='none'", 5000);*/
-}
 
 //加载完成后运行
 function loaddone() {
@@ -46,8 +42,7 @@ function loaddone() {
         cycle_b(false);
     }
     addClick() //绑定按键
-    loaded();
-    //player.play(0, 0);
+    //player.play(0, 0); //自动播放音乐
 }
 
 //淡入文字

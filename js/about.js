@@ -1,7 +1,7 @@
-//	var x_arr = new Array();
-//	var y_arr = new Array();
 indexs = 0;
 indexs02 = 0;
+var startTime;
+var flags = {};
 
 //然并卵的入口
 function about_main() {
@@ -101,7 +101,7 @@ function cycle(a, b) {
         cycarr[i].style.transform = "rotate(" + (aa - (aa * 2)) + "deg) translateX(+" + b + "px) rotate(" + aa + "deg)";
     }
 }
-
+//旧气泡选择?
 function cycle2(a, b) {
     var cycarr = document.getElementsByClassName("cycle_a");
     var aa = a;
@@ -248,8 +248,7 @@ function setTime_li() {
     document.getElementById('timeUl').style.left = 20 - i + 'px';
 }
 
-//手势事件
-
+//触屏手势事件
 window.addEventListener('touchstart', touchStart, false);
 window.addEventListener('touchmove', touchMove, false);
 window.addEventListener('touchend', touchEnd, false);
@@ -400,5 +399,19 @@ function addClick() {
         setTime_li()
     }
 }
+
+/*计时函数
+ * 用法
+ * var time=new timer
+ * time.stop()
+ */
+function timer() {
+    var t = new Date();
+    var time = t.getTime();
+    this.stop = function () {
+        var t = new Date();
+        return t - time;
+    };
+};
 
 about_main()

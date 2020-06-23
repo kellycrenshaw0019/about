@@ -1,155 +1,30 @@
-var h = window.innerHeight;
-var w = window.innerWidth;
+var h = window.innerHeight; //显示高度
+var w = window.innerWidth;	//显示宽度
 var debug = false; //调试模式
-var openTime = 0;
-var startTime;
-var flags = {};
+
 //解析XML
-function loadXml(str) {
-	if(str == null) {
-		return null;
-	}
-	var doc = str;
-	try {
-		doc = createXMLDOM();
-		doc.async = false;
-		doc.loadXML(str);
-	} catch(e) {
-		doc = $.parseXML(str);
-	}
-	return doc;
-}
+// function loadXml(str) {
+// 	if(str == null) {
+// 		return null;
+// 	}
+// 	var doc = str;
+// 	try {
+// 		doc = createXMLDOM();
+// 		doc.async = false;
+// 		doc.loadXML(str);
+// 	} catch(e) {
+// 		doc = $.parseXML(str);
+// 	}
+// 	return doc;
+// }
 
-function test(b) {
-	var a
-	eval("a=b");
-	if(a) {
-		b = false;
-	}
-	if(!a) b = true;
-}
-
-var badApple = {};
-badApple.fps = [];
-badApple.cont = 0;
-badApple.i = 0;
-badApple.tick = true;
-badApple.li = 0;
-badApple.f = [];
-badApple.out = function() {
-	var cont = 0
-	var arr = []
-	for(var i in badApple.fps) {
-		if(cont >= 512) {
-			badApple.f.push(arr);
-			arr = [];
-			cont = 0;
-		}
-		arr.push(badApple.fps[i])
-		cont++
-	}
-}
-badApple.get = function() {
-	getURL("BadAppleDat/" + "BadApple_" + pad(badApple.li, 4) + ".svg", function(s) {
-		if(s != null) {
-			var p1 = loadXml(s).children[0].children;
-			var ar = []
-			for(var i = 0; i < p1.length; i++) {
-				var e = p1[i].attributes
-				var c = e.fill.nodeValue
-				var r = e.d.nodeValue
-				if(parseInt(c[1] + c[2], 16) < 86) {
-					r = null;
-				} else {
-					ar.push(r);
-				}
-			}
-			if(ar.length == 0) {
-				badApple.fps.push(["M"]);
-			} else {
-				badApple.fps.push(ar);
-			}
-			badApple.li++;
-			badApple.get();
-		}
-	})
-}
-
-badApple.load = function() {
-	if(badApple.cont < 11) {
-		getURL("dat/" + badApple.cont + ".json", function(s) {
-			var obj = JSON.parse(s);
-			badApple.fps.concat(obj);
-			badApple.load();
-			badApple.cont++;
-		})
-	}
-}
-badApple.play = function() {
-	badApple.viev = byid("outSvg");
-	badApple.tick = true;
-	player.play(1, 0);
-	badApple.ing();
-}
-badApple.ing = function() {
-	if(badApple.tick) {
-		var arr = [];
-		var gen = badApple.fps[badApple.i];
-		if(gen == undefined) {
-
-		} else {
-			test(badApple.li + "*" + badApple.i)
-			badApple.i++;
-			for(ii in gen) {
-				//arr.push('<path fill=\"' + gen[ii][0] + '"\" opacity=\"1.00\" d=\"' + gen[ii][1] + '\"></path>');
-				arr.push('<path fill=\"#FFFFFF"\" opacity=\"1.00\" d=\"' + gen[ii] + '\"></path>');
-			}
-			badApple.viev.innerHTML = arr.join("\n");
-			setTimeout(badApple.ing, 30)
-			arr = [];
-		}
-	}
-}
-
-//数字长度
-function pad(num, n) {
-	var len = num.toString().length;
-	for(; len < n; len++) {
-		num = "0" + num;
-	}
-	return num;
-}
-
-//运行速度测试fun函数，cont次数（默认500次）
-function funTest(fun, cont, data, data2, data3) {
-	if(cont == undefined) cont = 500;
-	console.log("开始测试  " + console.dir(fun) + " 次数 " + cont);
-	var time = new timer;
-	for(var i = 0; i < cont; i++) {
-		fun(data, data2, data3);
-	}
-	console.log("耗时" + time.stop() + "毫秒 运行次数:" + cont);
-}
-/*计时函数
- * 用法
- * var time=new timer
- * time.stop()
- */
-function timer() {
-	var t = new Date();
-	var time = t.getTime();
-	this.stop = function() {
-		var t = new Date();
-		return t - time;
-	};
-};
 //统计访问时间
 var last;
 
 function lastInfo() {
 	var tdate = new Date();
 	last = cokie.get("runInfo");
-	if(last == null) {
+	if (last == null) {
 		last = {
 			"day": tdate.toLocaleString(),
 			"time": tdate.getTime(),
@@ -163,7 +38,7 @@ function lastInfo() {
 		console.log("统计访问次数" + last.cont);
 		last.day = tdate.toLocaleString();
 		last.time = tdate.getTime();
-		if(tdate.getTime() - last.time < 60000) last.cont++; //1分钟之内只统计一次访问次数
+		if (tdate.getTime() - last.time < 60000) last.cont++; //1分钟之内只统计一次访问次数
 		cokie.set("runInfo", JSON.stringify(last));
 	}
 
@@ -171,7 +46,7 @@ function lastInfo() {
 //Cookie
 var cokie = {
 	//写cookies
-	set: function(name, value) {
+	set: function (name, value) {
 		var Days = 30;
 		var exp = new Date();
 		exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
@@ -180,21 +55,22 @@ var cokie = {
 
 	//读取cookies
 
-	get: function(name) {
+	get: function (name) {
 		var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-		if(arr = document.cookie.match(reg)) return unescape(arr[2]);
+		if (arr = document.cookie.match(reg)) return unescape(arr[2]);
 		else return null;
 	},
 
 	//删除cookies
 
-	del: function(name) {
+	del: function (name) {
 		var exp = new Date();
 		exp.setTime(exp.getTime() - 1);
 		var cval = this.del(name);
-		if(cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+		if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 	}
 };
+
 //图片预加载
 function preLoadImg() {
 	var img = new Image();
@@ -213,54 +89,12 @@ function byid(s) {
 	return document.getElementById(s);
 }
 
-//动态执行 调试用
-function ev(msg) {
-	try {
-		eval(msg);
-	} catch(err) {
-		alert(err.message);
-	}
-}
-
-//主动调试输出 
-var logflg = {
-	s: "",
-	i: 2
-};
-var huam = byid("huam")
-
-function test(m) {
-	huam.textContent = m;
-}
-
-function strOut(m) {
-	var e = byid('logWin');
-	e.innerText = m;
-}
-
-function logout(m,k) {
-	var e = byid('logWin');
-	if(k) {
-		e.innerText = m;
-	} else if(m == logflg.s) {
-		var m = e.innerText.split("\n");
-		var en = logflg.s + " " + logflg.i;
-		m[m.length - 2] = en;
-		m = m.join("\n");
-		e.innerText = m;
-		logflg.i++;
-	} else {
-		e.innerText = e.innerText + m + "\n";
-		logflg.s = m;
-		logflg.i = 2;
-	}
-}
 
 //计算间隔天数
 function getDateDiff(st, en) {
 	var BirthDay = new Date(st);
 	var today;
-	if(en != undefined) {
+	if (en != undefined) {
 		today = new Date(en);
 	} else {
 		today = new Date();
@@ -282,7 +116,7 @@ function getDateDiff(st, en) {
 //更新存活时间
 function show_date_time() {
 	var tm = document.getElementsByName('show_time');
-	for(var i = 0; i < tm.length; i++) {
+	for (var i = 0; i < tm.length; i++) {
 		tm[i].innerText = "Sakura & Erii の主页已存活" + getDateDiff(tm[i].title);
 	}
 	//window.setTimeout("show_date_time()", 1000);
@@ -290,7 +124,7 @@ function show_date_time() {
 var show_date_timer = setInterval(show_date_time, 1000);
 
 function checkTime(i) {
-	if(i < 10) {
+	if (i < 10) {
 		i = "0" + i;
 	}
 	return i;
@@ -301,10 +135,10 @@ function urlData(n) {
 	var sc = window.location.search;
 	var vr = window.location.search.split('&');
 	var v = {};
-	if(vr.length > 0) {
-		for(i in vr) {
+	if (vr.length > 0) {
+		for (i in vr) {
 			var str = vr[i].split('=');
-			if(str[0] = n) {
+			if (str[0] = n) {
 				return str[1];
 			}
 		}
@@ -315,16 +149,16 @@ function urlData(n) {
 function loadScript(url, callback) {
 	var script = document.createElement("script");
 	script.type = "text/javascript";
-	if(typeof(callback) != "undefined") {
-		if(script.readyState) {
-			script.onreadystatechange = function() {
-				if(script.readyState == "loaded" || script.readyState == "complete") {
+	if (typeof (callback) != "undefined") {
+		if (script.readyState) {
+			script.onreadystatechange = function () {
+				if (script.readyState == "loaded" || script.readyState == "complete") {
 					script.onreadystatechange = null;
 					callback();
 				}
 			};
 		} else {
-			script.onload = function() {
+			script.onload = function () {
 				callback();
 			};
 		}
@@ -332,6 +166,7 @@ function loadScript(url, callback) {
 	script.src = url;
 	document.body.appendChild(script);
 }
+
 /*获取URL数据
  * url:地址
  * fum:加载完成后运行
@@ -339,19 +174,19 @@ function loadScript(url, callback) {
  */
 function getURL(url, fun, bool) {
 	var xmlhttp;
-	if(bool == undefined) bool = true;
-	if(window.XMLHttpRequest) {
+	if (bool == undefined) bool = true;
+	if (window.XMLHttpRequest) {
 		//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
 		xmlhttp = new XMLHttpRequest();
 	} else {
 		// IE6, IE5 浏览器执行代码
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
-	xmlhttp.onreadystatechange = function() {
-		if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	xmlhttp.onreadystatechange = function () {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			//logout(xmlhttp.responseText);
 			fun(xmlhttp.responseText);
-		} else if(xmlhttp.readyState == 4 && xmlhttp.status != 200){
+		} else if (xmlhttp.readyState == 4 && xmlhttp.status != 200) {
 			fun(null, xmlhttp.status);
 		}
 	}
